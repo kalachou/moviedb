@@ -4,6 +4,10 @@ import { IMovie } from '../../models/movie.interface';
 import { ITvShow } from '../../models/tvshow.interface';
 
 export enum ELibraryActions {
-    AddItem = 'Add item',
-    DeleteItem = 'Delete item'
+ /*    AddMovie = 'Add movie',
+    DeleteMovie = 'Delete movie',
+    AddShow = 'Add show',
+    DeleteShow = 'Delete show' */
+    AddItem = 'Add item to library',
+    DeleteItem = 'Delete item from library'
 }
