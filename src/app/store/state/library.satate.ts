@@ -7,8 +7,7 @@ import { initialAppState } from './app.state';
 
 export interface LibraryState {
     router?: RouterReducerState;
-    shows: Array<TvShow>;
-    movies: Array<Movie>;
+    items: (Movie|TvShow)[];
 }
 
 export const initialLibraryState: Library = {
