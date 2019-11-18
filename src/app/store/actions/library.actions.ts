@@ -1,7 +1,7 @@
 import {Action} from '@ngrx/store';
 
-import { IMovie } from '../../models/movie.interface';
-import { ITvShow } from '../../models/tvshow.interface';
+import { Movie } from '../../models/movie.interface';
+import { TvShow } from '../../models/tvshow.interface';
 
 export enum ELibraryActions {
  /*    AddMovie = 'Add movie',

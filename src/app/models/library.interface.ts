@@ -1,8 +1,6 @@
-import { IMovie } from './movie.interface';
-import { ITvShow } from './tvshow.interface';
+import { Movie } from './movie.interface';
+import { TvShow } from './tvshow.interface';
 
-export interface ILibrary {
-/*     movies: Array<IMovie>;
-    shows: Array<ITvShow>; */
-    items: (IMovie|ITvShow)[];
+export interface Library {
+    items: (Movie|TvShow)[];
 }

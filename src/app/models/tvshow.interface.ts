@@ -1,27 +1,27 @@
-export interface ITvShow {
-    backdrop_path: string;
+export interface TvShow {
+    backdropPath: string;
 
-    first_air_date: string;
+    firstAirDate: string;
 
-    genre_ids: Array<number>;
+    genreIds: Array<number>;
 
     id: number;
 
     name: string;
 
-    origin_country: Array<string>
+    originCountry: Array<string>;
 
-    original_language: string;
+    originalLanguage: string;
 
-    original_name: string;
+    originalName: string;
 
     overview: string;
 
     popularity: number;
 
-    poster_path: string;
+    posterPath: string;
 
-    vote_average: number;
+    voteAverage: number;
 
-    vote_count: number;
+    voteCount: number;
 }

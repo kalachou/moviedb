@@ -1,16 +1,16 @@
 import { RouterReducerState } from '@ngrx/router-store';
 
-import { ILibrary } from '../../models/library.interface';
-import { ITvShow } from '../../models/tvshow.interface';
-import { IMovie } from '../../models/movie.interface';
+import { Library } from '../../models/library.interface';
+import { TvShow } from '../../models/tvshow.interface';
+import { Movie } from '../../models/movie.interface';
+import { initialAppState } from './app.state';
 
-export interface ILibraryState {
+export interface LibraryState {
     router?: RouterReducerState;
-    shows: Array<ITvShow>;
-    movies: Array<IMovie>;
+    shows: Array<TvShow>;
+    movies: Array<Movie>;
 }
 
-export const initialLibraryState: ILibrary = {
-    shows: null,
-    movies: null
+export const initialLibraryState: Library = {
+    items: null
 };

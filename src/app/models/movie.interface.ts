@@ -1,29 +1,29 @@
-export interface IMovie {
+export interface Movie {
     adult: boolean;
 
-    backdrop_path: string;
+    backdropPath: string;
 
-    genre_ids: Array<number>;
+    genreIds: Array<number>;
 
     id: number;
 
-    original_language: string;
+    originalLanguage: string;
 
-    original_title: string;
+    originalTitle: string;
 
     overview: string;
 
     popularity: number;
 
-    poster_path: string;
+    posterPath: string;
 
-    release_date: string;
+    releaseDate: string;
 
     title: string;
 
     video: boolean;
 
-    vote_average: number;
+    voteAverage: number;
 
-    vote_count: number;
+    voteCount: number;
 }
