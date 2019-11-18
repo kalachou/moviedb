@@ -4,10 +4,18 @@ import { Movie } from '../../models/movie.interface';
 import { TvShow } from '../../models/tvshow.interface';
 
 export enum ELibraryActions {
- /*    AddMovie = 'Add movie',
-    DeleteMovie = 'Delete movie',
-    AddShow = 'Add show',
-    DeleteShow = 'Delete show' */
     AddItem = 'Add item to library',
-    DeleteItem = 'Delete item from library'
+    DeleteItem = 'Delete item from library',
 }
+
+export class AddItem implements Action {
+    public readonly type = ELibraryActions.AddItem;
+    constructor(public payload: (Movie|TvShow)) {}
+}
+
+export class DeleteItem implements Action {
+    public readonly type = ELibraryActions.DeleteItem;
+    constructor(public payload: (Movie|TvShow)) {}
+}
+
+export type LibraryActions = AddItem | DeleteItem;
