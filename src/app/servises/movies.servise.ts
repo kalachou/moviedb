@@ -29,7 +29,7 @@ export class MoviesServise {
     // convert into camelcased and remove unnesessary proprties
     resultArray = resultRequest.map((x: { vote_average: any; poster_path: any; overview: any; title: any; }) => ({
       voteAverage: x.vote_average,
-      posterPath: `https://image.tmdb.org/t/p/w600_and_h900_bestv2/${x.poster_path}`,
+      posterPath: `https://image.tmdb.org/t/p/w600_and_h900_bestv2${x.poster_path}`,
       overview: x.overview,
       title: x.title
     }));
