@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { forkJoin } from 'rxjs';
 import { EventEmitter } from '@angular/core';
 import { Movie } from '../models/movie.interface';
@@ -17,9 +17,13 @@ export class MoviesServise {
   public getMoviesPage(page: number = this.initialPage) {
     let resultArray: Movie[];
     let resultRequest: any;
+    const params = new HttpParams();
+    params.set('page', page.toString());
+    params.set('language', 'en-US');
+    params.set('api_key', '0de915948d52603403cc6102091989f6');
 
     forkJoin(
-      this.http.get(`https://api.themoviedb.org/3/movie/popular?page=${page}&language=en-US&api_key=0de915948d52603403cc6102091989f6`)
+      this.http.get('https://api.themoviedb.org/3/movie/popular', {params})
     ).subscribe((data: any) => resultRequest = data.results);
 
     // convert into camelcased and remove unnesessary proprties
