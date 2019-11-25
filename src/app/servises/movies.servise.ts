@@ -8,7 +8,7 @@ import { Movie } from '../models/movie.interface';
   providedIn: 'root'
 })
 
-export class MoviesServise {
+export class MoviesService {
 
   private initialPage = 1;
 
