@@ -6,11 +6,7 @@ import { MoviesPage } from 'src/app/models/moviesPage.interface';
 export interface MoviesPageState {
     router?: RouterReducerState;
     page: number;
-    items: [Movie, Movie, Movie, Movie, Movie,
-        Movie, Movie, Movie, Movie, Movie,
-        Movie, Movie, Movie, Movie, Movie,
-        Movie, Movie, Movie, Movie, Movie,
-        Movie, Movie, Movie, Movie, Movie];
+    items: Movie[];
 }
 
 export const initialMoviesPageState: MoviesPage = {
