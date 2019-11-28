@@ -13,6 +13,12 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MovieInfoComponent } from './components/movie-info/movie-info.component';
 import { ShowInfoComponent } from './components/show-info/show-info.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { MoviesService } from './services/movies.service';
+import { StoreModule } from '@ngrx/store';
+import { appReducers } from './store/reducers/app.reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { MoviesPageEffects } from './store/effects/moviesPage.effects';
+
 
 @NgModule({
   declarations: [
@@ -29,9 +35,11 @@ import { NavigationComponent } from './components/navigation/navigation.componen
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot(appReducers),
+    EffectsModule.forRoot([MoviesPageEffects])
   ],
-  providers: [],
+  providers: [MoviesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
