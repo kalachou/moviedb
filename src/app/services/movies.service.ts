@@ -12,7 +12,7 @@ export class MoviesService {
 
   private initialPage = 1;
 
-  constructor(private http: HttpClient) { }
+  constructor(private _http: HttpClient) { }
 
   public getMoviesPage(page: number = this.initialPage) {
     let resultArray: Movie[];
@@ -23,7 +23,7 @@ export class MoviesService {
     params.set('api_key', '0de915948d52603403cc6102091989f6');
 
     forkJoin(
-      this.http.get('https://api.themoviedb.org/3/movie/popular', {params})
+      this._http.get('https://api.themoviedb.org/3/movie/popular', {params})
     ).subscribe((data: any) => resultRequest = data.results);
 
     // convert into camelcased and remove unnesessary proprties
