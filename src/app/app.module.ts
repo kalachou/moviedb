@@ -12,6 +12,7 @@ import { LibraryComponent } from './components/library/library.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MovieInfoComponent } from './components/movie-info/movie-info.component';
 import { ShowInfoComponent } from './components/show-info/show-info.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ShowInfoComponent } from './components/show-info/show-info.component';
     LibraryComponent,
     NotFoundComponent,
     MovieInfoComponent,
-    ShowInfoComponent
+    ShowInfoComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,

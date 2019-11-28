@@ -1,6 +1,6 @@
 import { Movie } from './movie.interface';
 
-export interface MoviePage {
+export interface MoviesPage {
     items: (Movie)[];
     page: number;
 }

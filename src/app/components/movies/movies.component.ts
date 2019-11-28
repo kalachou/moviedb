@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Movie } from 'src/app/models/movie.interface';
 
 @Component({
   selector: 'app-movies',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movies.component.sass']
 })
 export class MoviesComponent implements OnInit {
+  @Input()
+  movies: Movie[];
+  @Output()
+  movieSelected: EventEmitter<number> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  navigateToMovie(id: number) {
+    this.movieSelected.emit(id);
   }
 
 }

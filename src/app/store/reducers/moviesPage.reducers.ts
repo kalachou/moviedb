@@ -1,6 +1,6 @@
 import { EMoviesPageActions } from '../actions/moviesPage.actions';
 import { MoviesPageActions } from '../actions/moviesPage.actions';
-import { initialMoviesPageState, MoviesPageState } from '../state/moviesPage.satate';
+import { initialMoviesPageState, MoviesPageState } from '../state/moviesPage.state';
 
 
 export const moviesPageReducers = (
@@ -10,11 +10,11 @@ export const moviesPageReducers = (
     switch (action.type) {
         case EMoviesPageActions.LoadPage:
             return {
-                ...state,
-                items: state.items.concat(action.payload)
+                items: null,
+                page: action.payload
             };
 
         default :
-            return state;
+            return null;
     }
 };
