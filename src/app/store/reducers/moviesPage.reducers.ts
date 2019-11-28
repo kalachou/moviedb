@@ -13,6 +13,19 @@ export const moviesPageReducers = (
                 items: null,
                 page: action.payload
             };
+        case EMoviesPageActions.LoadPageSucces:
+            return {
+                ...state,
+                items: state.items.concat(action.payload),
+            };
+
+        case EMoviesPageActions.LoadPageFail:
+            return {
+                items: null,
+                page: null
+            };
+
+
 
         default :
             return null;
