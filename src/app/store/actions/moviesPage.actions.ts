@@ -4,6 +4,8 @@ import { Movie } from '../../models/movie.interface';
 
 export enum EMoviesPageActions {
     LoadPage = 'Load page',
+    LoadPageSucces = 'Loading page is succesful',
+    LoadPageFail = 'Loading page is failed',
 }
 
 export class LoadPage implements Action {
@@ -11,4 +13,13 @@ export class LoadPage implements Action {
     constructor(public payload: number = 1) {}
 }
 
-export type MoviesPageActions = LoadPage;
+export class LoadPageSucces implements Action {
+    public readonly type = EMoviesPageActions.LoadPage;
+    constructor(public payload: Movie[]) {}
+}
+
+export class LoadPageFail implements Action {
+    public readonly type = EMoviesPageActions.LoadPage;
+}
+
+export type MoviesPageActions = LoadPage | LoadPageSucces | LoadPageFail;
