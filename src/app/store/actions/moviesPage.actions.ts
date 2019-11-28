@@ -14,12 +14,12 @@ export class LoadPage implements Action {
 }
 
 export class LoadPageSucces implements Action {
-    public readonly type = EMoviesPageActions.LoadPage;
+    public readonly type = EMoviesPageActions.LoadPageSucces;
     constructor(public payload: Movie[]) {}
 }
 
 export class LoadPageFail implements Action {
-    public readonly type = EMoviesPageActions.LoadPage;
+    public readonly type = EMoviesPageActions.LoadPageFail;
 }
 
 export type MoviesPageActions = LoadPage | LoadPageSucces | LoadPageFail;
