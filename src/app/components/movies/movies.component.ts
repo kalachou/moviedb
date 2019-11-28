@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@angular/core';
 import { Movie } from 'src/app/models/movie.interface';
 
 @Component({
@@ -7,12 +7,19 @@ import { Movie } from 'src/app/models/movie.interface';
   styleUrls: ['./movies.component.sass']
 })
 export class MoviesComponent implements OnInit {
+
+  constructor() { }
   @Input()
   movies: Movie[];
   @Output()
   movieSelected: EventEmitter<number> = new EventEmitter();
 
-  constructor() { }
+  @HostListener('window:scroll', [])
+  onScroll(): void {
+    if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 2) {
+      alert("you're at the bottom of the page");
+    }
+  }
 
   ngOnInit() {
   }
@@ -20,5 +27,6 @@ export class MoviesComponent implements OnInit {
   navigateToMovie(id: number) {
     this.movieSelected.emit(id);
   }
+
 
 }
