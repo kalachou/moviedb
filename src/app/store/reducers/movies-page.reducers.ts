@@ -1,6 +1,6 @@
-import { EMoviesPageActions } from '../actions/moviesPage.actions';
-import { MoviesPageActions } from '../actions/moviesPage.actions';
-import { initialMoviesPageState, MoviesPageState } from '../state/moviesPage.state';
+import { EMoviesPageActions } from '../actions/movies-page.actions';
+import { MoviesPageActions } from '../actions/movies-page.actions';
+import { initialMoviesPageState, MoviesPageState } from '../state/movies-page.state';
 
 
 export const moviesPageReducers = (

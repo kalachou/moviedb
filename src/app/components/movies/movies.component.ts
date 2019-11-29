@@ -2,8 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@a
 import { Movie } from '../../models/movie.interface';
 import { Store, select } from '@ngrx/store';
 import { AppState } from '../../store/state/app.state';
-import { LoadPage } from '../../store/actions/moviesPage.actions';
-import { selectCurrentPage } from '../../store/selectors/moviesPage.selectors';
+import { LoadPage } from '../../store/actions/movies-page.actions';
+import { selectCurrentPage } from '../../store/selectors/movies-page.selectors';
 
 @Component({
   selector: 'app-movies',

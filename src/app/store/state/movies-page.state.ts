@@ -1,7 +1,7 @@
 import { RouterReducerState } from '@ngrx/router-store';
 
 import { Movie } from '../../models/movie.interface';
-import { MoviesPage } from '../../models/moviesPage.interface';
+import { MoviesPage } from '../../models/movies-page.interface';
 
 export interface MoviesPageState {
     selectedMovie: Movie;

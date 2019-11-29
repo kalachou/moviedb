@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { switchMap } from 'rxjs/operators';
 import { MoviesService } from '../../services/movies.service';
 import { Injectable } from '@angular/core';
-import { EMoviesPageActions, LoadPage, LoadPageSucces } from '../actions/moviesPage.actions';
+import { EMoviesPageActions, LoadPage, LoadPageSucces } from '../actions/movies-page.actions';
 import { AppState } from '../state/app.state';
 import { of } from 'rxjs';
 

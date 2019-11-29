@@ -17,7 +17,7 @@ import { MoviesService } from './services/movies.service';
 import { StoreModule } from '@ngrx/store';
 import { appReducers } from './store/reducers/app.reducers';
 import { EffectsModule } from '@ngrx/effects';
-import { MoviesPageEffects } from './store/effects/moviesPage.effects';
+import { MoviesPageEffects } from './store/effects/movies-page.effects';
 
 
 @NgModule({
