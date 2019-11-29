@@ -7,7 +7,7 @@ import { MoviesPageState } from './moviesPage.state';
 export interface AppState {
     router?: RouterReducerState;
     library: LibraryState;
-    shows: ShowsPageState;
+    shows?: ShowsPageState;
     movies: MoviesPageState;
 }
 
