@@ -13,3 +13,8 @@ export const selectSelectedMovie = createSelector(
     selectMovies,
     (state: MoviesPageState) => state.selectedMovie
 );
+
+export const selectCurrentPage = createSelector(
+    selectMovies,
+    (state: MoviesPageState) => state.page
+);
