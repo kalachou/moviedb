@@ -10,6 +10,7 @@ export const moviesPageReducers = (
     switch (action.type) {
         case EMoviesPageActions.LoadPage:
             return {
+                ...state,
                 items: null,
                 page: action.payload
             };
@@ -19,11 +20,11 @@ export const moviesPageReducers = (
                 items: state.items.concat(action.payload),
             };
 
-        case EMoviesPageActions.LoadPageFail:
+/*         case EMoviesPageActions.LoadPageFail:
             return {
                 items: null,
                 page: null
-            };
+            }; */
 
 
 
