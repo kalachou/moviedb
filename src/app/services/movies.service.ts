@@ -15,31 +15,34 @@ export class MoviesService {
   constructor(private _http: HttpClient) { }
 
   public getMoviesPage(page: number = this.initialPage) {
-    let resultArray: Movie[];
-    let resultRequest: any;
- /*    const params = new HttpParams();
-    params.set('page', page.toString());
-    params.set('language', 'en-US');
-    params.set('api_key', '0de915948d52603403cc6102091989f6');
+    // let resultArray: Movie[];
+    // let resultRequest: any;
+    /*    const params = new HttpParams();
+       params.set('page', page.toString());
+       params.set('language', 'en-US');
+       params.set('api_key', '0de915948d52603403cc6102091989f6');
 
-    forkJoin(
-      this._http.get('https://api.themoviedb.org/3/movie/popular', { params }))
-      .subscribe((data: any) => resultRequest = data); */
+       forkJoin(
+         this._http.get('https://api.themoviedb.org/3/movie/popular', { params }))
+         .subscribe((data: any) => resultRequest = data); */
 
 
-    forkJoin(
-      this._http.get('https://api.themoviedb.org/3/movie/popular?page=1&language=en-US&api_key=0de915948d52603403cc6102091989f6')
-    ).subscribe(data => {resultRequest = data; });
+    return forkJoin(
+      this._http.get(`https://api.themoviedb.org/3/movie/popular?page=${page}&language=en-US&api_key=0de915948d52603403cc6102091989f6`)
+    ); /* .subscribe(data => {
+      resultRequest = data;
+      // convert into camelcased and remove unnesessary proprties
+      resultArray = resultRequest.map((x: { vote_average: any; poster_path: any; overview: any; title: any; }) => ({
+        voteAverage: x.vote_average,
+        posterPath: `https://image.tmdb.org/t/p/w600_and_h900_bestv2${x.poster_path}`,
+        overview: x.overview,
+        title: x.title
+      }));
+    }); */
 
-    // convert into camelcased and remove unnesessary proprties
-    resultArray = resultRequest.map((x: { vote_average: any; poster_path: any; overview: any; title: any; }) => ({
-      voteAverage: x.vote_average,
-      posterPath: `https://image.tmdb.org/t/p/w600_and_h900_bestv2${x.poster_path}`,
-      overview: x.overview,
-      title: x.title
-    }));
 
-    return resultArray;
+
+    // return resultArray;
 
     /*
     // average vote
