@@ -11,7 +11,7 @@ export const moviesPageReducers = (
         case EMoviesPageActions.LoadPage:
             return {
                 ...state,
-                // items: [],
+                //items: [],
                 page: action.payload
             };
         case EMoviesPageActions.LoadPageSucces:
@@ -20,15 +20,14 @@ export const moviesPageReducers = (
                 items: state.items.concat(action.payload),
             };
 
-/*         case EMoviesPageActions.LoadPageFail:
-            return {
-                items: null,
-                page: null
-            }; */
+        /*         case EMoviesPageActions.LoadPageFail:
+                    return {
+                        items: null,
+                        page: null
+                    }; */
 
-
-
-        default :
-            return null;
+        // this case should be disabled!
+        /* default :
+            return null; */
     }
 };
