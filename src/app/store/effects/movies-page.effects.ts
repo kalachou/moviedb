@@ -14,7 +14,18 @@ export class MoviesPageEffects {
     ofType<LoadPage>(EMoviesPageActions.LoadPage),
     switchMap((action: LoadPage) => {
       const pageNumber = action.payload;
-      const moviesChunk =  this._moviesService.getMoviesPage(pageNumber);
+      let moviesChunk;
+      let resultRequest: any;
+      this._moviesService.getMoviesPage(pageNumber).subscribe(data => {
+        resultRequest = data;
+        // convert into camelcased and remove unnesessary proprties
+        moviesChunk = resultRequest.map((x: { vote_average: any; poster_path: any; overview: any; title: any; }) => ({
+          voteAverage: x.vote_average,
+          posterPath: `https://image.tmdb.org/t/p/w600_and_h900_bestv2${x.poster_path}`,
+          overview: x.overview,
+          title: x.title
+        }));
+      });
       return of(new LoadPageSucces(moviesChunk));
     })
   );
