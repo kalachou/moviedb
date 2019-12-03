@@ -8,7 +8,7 @@ import { Movie } from '../../models/movie.interface';
 })
 export class MoviesComponent implements OnInit {
   constructor() { }
- 
+ @Input()
   movies: Movie[];
 
  
