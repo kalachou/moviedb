@@ -6,12 +6,15 @@ import { LoadPage } from '../../store/actions/movies-page.actions';
 import { selectCurrentPage, selectMoviesList } from '../../store/selectors/movies-page.selectors';
 
 @Component({
-  templateUrl: './movies.component.html',
-  styleUrls: ['./movies.component.sass']
+  templateUrl: './movies-container.component.html',
+  styleUrls: ['./movies-container.component.sass']
 })
-export class MoviesComponent implements OnInit {
+export class MoviesContainerComponent implements OnInit {
   private _nextPage;
-  movies$ = this._store.select(selectMoviesList);
+  @Input()
+  movies;
+  @Output()
+  movies$;
 
   constructor(private _store: Store<AppState>) { }
 
@@ -25,6 +28,7 @@ export class MoviesComponent implements OnInit {
 
   ngOnInit() {
     this._store.dispatch(new LoadPage());
+    this.movies$ = this._store.select(selectMoviesList);
   }
 
   navigateToMovie(id: number) {

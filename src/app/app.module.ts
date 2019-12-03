@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { MoviesComponent } from './components/movies/movies.component';
-import { MoviesComponent as MoviesContainerComponent } from './containers/movies/movies.component'
+import { MoviesContainerComponent } from './containers/movies/movies-container.component';
 import { ShowsComponent } from './components/shows/shows.component';
 import { LibraryComponent } from './components/library/library.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
