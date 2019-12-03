@@ -1,1 +1,6 @@
-<p>movies works!</p>
+<div *ngFor="let movie of movies">
+    <p>{{movie.title}}</p>
+    <p>{{movie.voteAverage}}</p>
+    <p>{{movie.overview}}</p>
+    <img src="{{movie.posterPath}}" alt="Poster">
+</div>
