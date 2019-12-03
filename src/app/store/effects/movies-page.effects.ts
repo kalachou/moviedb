@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 import { EMoviesPageActions, LoadPage, LoadPageSucces, LoadPageFail } from '../actions/movies-page.actions';
 import { AppState } from '../state/app.state';
 import { of } from 'rxjs';
+import { Movie } from '../../models/movie.interface';
 
 @Injectable()
 export class MoviesPageEffects {
@@ -18,17 +19,18 @@ export class MoviesPageEffects {
       let resultRequest: any;
       return this._moviesService.getMoviesPage(pageNumber).pipe(
         map(data => {
-          resultRequest = data;
+          resultRequest = data[0]['results'];
+          //console.log('data is', data);
           // convert into camelcased and remove unnesessary proprties
-          moviesChunk = resultRequest.map((x: { vote_average: any; poster_path: any; overview: any; title: any; }) => ({
-            voteAverage: x.vote_average,
+          moviesChunk = resultRequest.map((x: Movie) => ({
+            voteAverage: x.voteAverage,
             posterPath: `https://image.tmdb.org/t/p/w600_and_h900_bestv2${x.poster_path}`,
             overview: x.overview,
             title: x.title
           }));
           return new LoadPageSucces(moviesChunk);
         }),
-        catchError(err => new LoadPageFail(err))
+        // catchError(err => new LoadPageFail(err))
       );
     })
   );

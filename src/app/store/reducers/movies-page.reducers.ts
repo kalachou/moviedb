@@ -11,7 +11,6 @@ export const moviesPageReducers = (
         case EMoviesPageActions.LoadPage:
             return {
                 ...state,
-                //items: [],
                 page: action.payload
             };
         case EMoviesPageActions.LoadPageSucces:
