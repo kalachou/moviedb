@@ -12,51 +12,21 @@ export class MoviesService {
 
   private initialPage = 1;
 
-  constructor(private _http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   public getMoviesPage(page: number = this.initialPage) {
-    // let resultArray: Movie[];
-    // let resultRequest: any;
-    /*    const params = new HttpParams();
-       params.set('page', page.toString());
-       params.set('language', 'en-US');
-       params.set('api_key', '0de915948d52603403cc6102091989f6');
-
-       forkJoin(
-         this._http.get('https://api.themoviedb.org/3/movie/popular', { params }))
-         .subscribe((data: any) => resultRequest = data); */
-
+    /* const params = new HttpParams();
+    params.set('page', page.toString());
+    params.set('language', 'en-US');
+    params.set('api_key', '0de915948d52603403cc6102091989f6');
 
     return forkJoin(
-      this._http.get(`https://api.themoviedb.org/3/movie/popular?page=${page}&language=en-US&api_key=0de915948d52603403cc6102091989f6`)
-    ); /* .subscribe(data => {
-      resultRequest = data;
-      // convert into camelcased and remove unnesessary proprties
-      resultArray = resultRequest.map((x: { vote_average: any; poster_path: any; overview: any; title: any; }) => ({
-        voteAverage: x.vote_average,
-        posterPath: `https://image.tmdb.org/t/p/w600_and_h900_bestv2${x.poster_path}`,
-        overview: x.overview,
-        title: x.title
-      }));
-    }); */
+      this.http.get('https://api.themoviedb.org/3/movie/popular', {...params}));
+ */
 
-
-
-    // return resultArray;
-
-    /*
-    // average vote
-    arr[0].vote_average
-
-    // picture
-    `https://image.tmdb.org/t/p/w600_and_h900_bestv2${arr[0].poster_path}`
-
-    // info
-    arr[0].overview
-
-    // title
-    arr[0].title
-    */
+        return forkJoin(
+          this.http.get(`https://api.themoviedb.org/3/movie/popular?page=${page}&language=en-US&api_key=0de915948d52603403cc6102091989f6`)
+        );
   }
 
 }

@@ -25,8 +25,7 @@ export const moviesPageReducers = (
                         page: null
                     }; */
 
-        // this case should be disabled!
-        /* default :
-            return null; */
+        default :
+            return state;
     }
 };
