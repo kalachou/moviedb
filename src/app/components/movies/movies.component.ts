@@ -14,14 +14,13 @@ export class MoviesComponent implements OnInit {
   private _nextPage;
 
   constructor(private _store: Store<AppState>) { }
-  @Input()
-  movies: Movie[];
-  @Output()
-  movieSelected: EventEmitter<number> = new EventEmitter();
+  @Input() movies: Movie[];
+  @Output() movieSelected: EventEmitter<number> = new EventEmitter();
 
   @HostListener('window:scroll', [])
   onScroll(): void {
-    if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 2) {
+    // if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 2) {
+    if ((window.screen.height + window.pageYOffset) >= document.body.scrollHeight - 2) {
       alert("you're at the bottom of the page");
       this.loadNextPage();
     }
