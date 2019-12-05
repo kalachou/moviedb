@@ -22,7 +22,7 @@ export class MoviesPageEffects {
           resultRequest = data[0]['results'];
           //console.log('data is', data);
           // convert into camelcased and remove unnesessary proprties
-          moviesChunk = resultRequest.map((x: Movie) => ({
+          moviesChunk = resultRequest.map((x: any) => ({
             voteAverage: x.voteAverage,
             posterPath: `https://image.tmdb.org/t/p/w600_and_h900_bestv2${x.poster_path}`,
             overview: x.overview,
