@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,8 @@ import { StoreModule } from '@ngrx/store';
 import { appReducers } from './store/reducers/app.reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { MoviesPageEffects } from './store/effects/movies-page.effects';
+import { SearchComponent } from './components/search/search.component';
+import { SearchService } from './services/search.service';
 
 
 @NgModule({
@@ -30,16 +33,18 @@ import { MoviesPageEffects } from './store/effects/movies-page.effects';
     NotFoundComponent,
     MovieInfoComponent,
     ShowInfoComponent,
-    NavigationComponent
+    NavigationComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot(appReducers),
-    EffectsModule.forRoot([MoviesPageEffects])
+    EffectsModule.forRoot([MoviesPageEffects]),
+    FormsModule
   ],
-  providers: [MoviesService],
+  providers: [MoviesService, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
