@@ -1,7 +1,7 @@
 <div class="movie-card" *ngFor="let movie of movies" [style.backgroundImage]="'url('+movie.posterPath+')'">
-
+    <div class="movie-card__addition"></div>
     <div class="movie-card__title">
-        <div class="movie-card__addition"></div>
+        
         <p>{{movie.title}}</p>
         <p>{{movie.voteAverage}}</p>
         <p>{{movie.overview}}</p>

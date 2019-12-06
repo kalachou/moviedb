@@ -1,6 +1,7 @@
 $movie-card--height: 450px
 $movie-card--width: 300px
-$movie-card--border-radius: 5%
+$movie-card--border-radius: 0.05 * $movie-card--height
+$title--top-padding: 0.3 * $movie-card--height
 :host
     display: flex
     flex-direction: row
@@ -14,26 +15,22 @@ $movie-card--border-radius: 5%
         margin: 1.2rem
         background-size: cover
         border-radius: $movie-card--border-radius
+        cursor: pointer
 
     .movie-card__title
-        height: $movie-card--height
+        height: $movie-card--height - $title--top-padding
         width: $movie-card--width
         border-radius: $movie-card--border-radius
         position: absolute
-        top: 0
+        top: $title--top-padding
         left: 0
         opacity: 0
         z-index: 100
-        font-size: 1.5rem
+        font-size: 1rem
         overflow-y: auto
         color: lime
         padding: 5%
         box-sizing: border-box
-
-    .movie-card__title:hover
-        opacity: 0.8
-        background-color: gray
-        cursor: pointer
 
     .movie-card__addition
         width: 5%
@@ -42,6 +39,14 @@ $movie-card--border-radius: 5%
         position: absolute
         top: 5%
         right: 5%
+        opacity: 0
+
+    .movie-card__addition:hover ~ .movie-card__title
+        opacity: 0.8
+        background-color: gray
+
+    .movie-card:hover .movie-card__addition
+        opacity: 0.8
 
     .movie-card__addition_added
         background-color: green
