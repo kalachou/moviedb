@@ -24,9 +24,9 @@ export class MoviesService {
       this.http.get('https://api.themoviedb.org/3/movie/popular', {...params}));
  */
 
-        return forkJoin(
-          this.http.get(`https://api.themoviedb.org/3/movie/popular?page=${page}&language=en-US&api_key=0de915948d52603403cc6102091989f6`)
-        );
+    return forkJoin(
+      this.http.get(`https://api.themoviedb.org/3/movie/popular?page=${page}&language=en-US&api_key=0de915948d52603403cc6102091989f6`)
+    );
   }
 
 }
