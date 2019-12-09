@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-search',
@@ -9,13 +10,13 @@ export class SearchComponent implements OnInit {
   @Input() searchInput: string;
   @Output() searchInputChange = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(private search: SearchService) { }
 
   ngOnInit() {
   }
 
   onSearchInputChange(model: string) {
     this.searchInput = model;
-    this.searchInputChange.emit(this.searchInput);
+    this.search.quickFilterSearch(this.searchInput);
   }
 }
