@@ -1,52 +1,63 @@
 $movie-card--height: 450px
 $movie-card--width: 300px
 $movie-card--border-radius: 0.05 * $movie-card--height
-$title--top-padding: 0.3 * $movie-card--height
+$overview--top-padding: 0.1 * $movie-card--height
 :host
-    display: flex
-    flex-direction: row
-    flex-wrap: wrap
-    justify-content: space-around
-    align-content: space-around
-    .movie-card
-        position: relative
-        height: $movie-card--height
-        width: $movie-card--width
-        margin: 1.2rem
-        background-size: cover
-        border-radius: $movie-card--border-radius
-        cursor: pointer
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  justify-content: space-around
+  align-content: space-around
 
-    .movie-card__title
-        height: $movie-card--height - $title--top-padding
-        width: $movie-card--width
-        border-radius: $movie-card--border-radius
-        position: absolute
-        top: $title--top-padding
-        left: 0
-        opacity: 0
-        z-index: 100
-        font-size: 1rem
-        overflow-y: auto
-        color: lime
-        padding: 5%
-        box-sizing: border-box
+  .movies-page__movie-card
+    margin: 1.2rem
 
-    .movie-card__addition
-        width: 5%
-        height: 5%
-        background-color: red
-        position: absolute
-        top: 5%
-        right: 5%
-        opacity: 0
+  .movie-card
+    position: relative
+    height: $movie-card--height
+    width: $movie-card--width
+    background-size: cover
+    border-radius: $movie-card--border-radius
+    cursor: pointer
 
-    .movie-card__addition:hover ~ .movie-card__title
-        opacity: 0.8
-        background-color: gray
+    &__overview
+      height: $movie-card--height - $overview--top-padding
+      width: $movie-card--width
+      border-radius: $movie-card--border-radius
+      position: absolute
+      top: $overview--top-padding
+      opacity: 0
+      font-size: 1.2rem
+      font-weight: bold
+      color: lime
+      padding: 5%
+      box-sizing: border-box
+      overflow-y: auto
 
-    .movie-card:hover .movie-card__addition
-        opacity: 0.8
+    &__info, &__addition
+      width: $movie-card--border-radius
+      height: $movie-card--border-radius
+      position: absolute
+      top: 2.5%
+      border-radius: 50%
+      opacity: 0
+      text-align: center
+      background-color: olive
+      line-height: 100%
 
-    .movie-card__addition_added
-        background-color: green
+    &__info
+      right: 15%
+
+    &__addition
+      right: 5%
+
+    &__info:hover ~ .movie-card__overview
+      opacity: 0.8
+      background-color: black
+
+    &__addition_added
+      background-color: green
+
+    &:hover
+      .movie-card__info, .movie-card__addition
+        opacity: 0.9
