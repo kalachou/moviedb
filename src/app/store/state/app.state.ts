@@ -8,7 +8,7 @@ import { ShowsPageState } from './shows-page.state';
 export interface AppState {
     router?: RouterReducerState;
     library: LibraryState;
-    shows?: ShowsPageState;
+    shows: ShowsPageState;
     movies: MoviesPageState;
 }
 
@@ -17,7 +17,3 @@ export const initialAppState: AppState = {
     shows: null,
     movies: null
 };
-
-export function getInitialAppState(): AppState {
-    return initialAppState;
-}
