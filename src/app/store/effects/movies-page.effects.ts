@@ -21,7 +21,7 @@ export class MoviesPageEffects {
         map(data => {
           resultRequest = data[0]['results'];
           moviesChunk = resultRequest.map((x: any) => ({
-            voteAverage: x.voteAverage,
+            voteAverage: x.vote_average,
             posterPath: `https://image.tmdb.org/t/p/w600_and_h900_bestv2${x.poster_path}`,
             overview: x.overview,
             title: x.title
