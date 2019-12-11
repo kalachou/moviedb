@@ -4,6 +4,7 @@ import { ShowsPage } from '../../models/shows-page.interface';
 import { TvShow } from '../../models/tvshow.interface';
 
 export interface ShowsPageState {
+    selectedShow: TvShow;
     router?: RouterReducerState;
     page: number;
     items: TvShow[];
@@ -11,5 +12,6 @@ export interface ShowsPageState {
 
 export const initialShowsPageState: ShowsPage = {
     page: 1,
-    items: new Array<TvShow>(20)
+    items: [],
+    selectedShow: null
 };

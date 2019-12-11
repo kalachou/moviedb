@@ -21,6 +21,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { MoviesPageEffects } from './store/effects/movies-page.effects';
 import { SearchComponent } from './components/search/search.component';
 import { SearchService } from './services/search.service';
+import { ShowsService } from './services/shows.service';
+import { ShowsPageEffects } from './store/effects/shows-page.effects';
 
 
 @NgModule({
@@ -41,10 +43,10 @@ import { SearchService } from './services/search.service';
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot(appReducers),
-    EffectsModule.forRoot([MoviesPageEffects]),
+    EffectsModule.forRoot([MoviesPageEffects, ShowsPageEffects]),
     FormsModule
   ],
-  providers: [MoviesService, SearchService],
+  providers: [MoviesService, ShowsService, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

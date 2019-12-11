@@ -4,13 +4,15 @@ import { TvShow } from '../models/tvshow.interface';
 import { Store } from '@ngrx/store';
 import { AppState } from '../store/state/app.state';
 import { selectMoviesList } from '../store/selectors/movies-page.selectors';
+import { selectShowsList } from '../store/selectors/shows-page.selectors';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchService {
   private loadedMoviesArray: Movie[];
-  private filteredMoviesArray: (Movie | TvShow)[];
+  private loadedShowsArray: TvShow[];
+  private filteredItemsArray: (Movie | TvShow)[];
   private showedPage = 'movies';
 
   public onQuickFilterSearch: EventEmitter<(Movie | TvShow)[]> = new EventEmitter();
@@ -20,21 +22,28 @@ export class SearchService {
     this.store.select(selectMoviesList).subscribe(x => {
       this.loadedMoviesArray = x;
     });
+    this.store.select(selectShowsList).subscribe(x => {
+      this.loadedShowsArray = x;
+    });
   }
 
   public quickFilterSearch(searchInput: string) {
     const regExp = new RegExp(searchInput, 'i');
     if (this.showedPage === 'movies') {
-      this.filteredMoviesArray = this.loadedMoviesArray.filter(
+      this.filteredItemsArray = this.loadedMoviesArray.filter(
         item => regExp.test(item.title)
-        );
-      this.onQuickFilterSearch.emit(this.filteredMoviesArray);
-
+      );
+    }
+    if (this.showedPage === 'shows') {
+      this.filteredItemsArray = this.loadedShowsArray.filter(
+        item => regExp.test(item.title)
+      );
     }
     if (!searchInput) {
       this.onSearchTurnOff.emit(true);
     } else {
       this.onSearchTurnOff.emit(false);
+      this.onQuickFilterSearch.emit(this.filteredItemsArray);
     }
 
   }

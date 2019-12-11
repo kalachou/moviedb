@@ -1,5 +1,6 @@
 import { TvShow } from './tvshow.interface';
 export interface ShowsPage {
-    items: (TvShow)[];
+    items: TvShow[];
     page: number;
+    selectedShow: TvShow;
 }
