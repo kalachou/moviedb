@@ -1,4 +1,5 @@
-import { Injectable } from "@angular/core";
+/*import { Injectable } from "@angular/core";
+import { Action } from "rxjs/internal/scheduler/Action";
 
 @Injectable
 export class LibraryEffects {
@@ -6,6 +7,7 @@ export class LibraryEffects {
 
     constructor (
         private _libraryService: LibraryService,
-        private _actions$: 
+        private _actions$: Action
     ) {}
 }
+*/

@@ -1,0 +1,63 @@
+$show-card--height: 450px
+$show-card--width: 300px
+$show-card--border-radius: 0.05 * $show-card--height
+$overview--top-padding: 0.1 * $show-card--height
+:host
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  justify-content: space-around
+  align-content: space-around
+
+  .shows-page__show-card
+    margin: 1.2rem
+
+  .show-card
+    position: relative
+    height: $show-card--height
+    width: $show-card--width
+    background-size: cover
+    border-radius: $show-card--border-radius
+    cursor: pointer
+
+    &__overview
+      height: $show-card--height - $overview--top-padding
+      width: $show-card--width
+      border-radius: $show-card--border-radius
+      position: absolute
+      top: $overview--top-padding
+      opacity: 0
+      font-size: 1.2rem
+      font-weight: bold
+      color: lime
+      padding: 5%
+      box-sizing: border-box
+      overflow-y: auto
+
+    &__info, &__addition
+      width: $show-card--border-radius
+      height: $show-card--border-radius
+      position: absolute
+      top: 2.5%
+      border-radius: 50%
+      opacity: 0
+      text-align: center
+      background-color: olive
+      line-height: 100%
+
+    &__info
+      right: 15%
+
+    &__addition
+      right: 5%
+
+    &__info:hover ~ .show-card__overview
+      opacity: 0.8
+      background-color: black
+
+    &__addition_added
+      background-color: green
+
+    &:hover
+      .show-card__info, .show-card__addition
+        opacity: 0.9

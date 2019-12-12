@@ -1,15 +1,15 @@
 import { RouterReducerState } from '@ngrx/router-store';
 
-import { Library } from '../../models/library.interface';
-import { TvShow } from '../../models/tvshow.interface';
-import { Movie } from '../../models/movie.interface';
+import { LibraryState } from './library.satate';
+import { MoviesPageState } from './movies-page.state';
+import { ShowsPageState } from './shows-page.state';
 
 
 export interface AppState {
     router?: RouterReducerState;
-    library: Library;
-    shows: Array<TvShow>;
-    movies: Array<Movie>;
+    library: LibraryState;
+    shows: ShowsPageState;
+    movies: MoviesPageState;
 }
 
 export const initialAppState: AppState = {
@@ -17,7 +17,3 @@ export const initialAppState: AppState = {
     shows: null,
     movies: null
 };
-
-export function getInitialAppState(): AppState {
-    return initialAppState;
-}

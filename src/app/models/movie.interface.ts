@@ -1,5 +1,5 @@
 export interface Movie {
-    adult: boolean;
+ /*    adult: boolean;
 
     backdropPath: string;
 
@@ -11,19 +11,20 @@ export interface Movie {
 
     originalTitle: string;
 
-    overview: string;
-
     popularity: number;
-
-    posterPath: string;
 
     releaseDate: string;
 
-    title: string;
-
     video: boolean;
+
+    voteCount: number;
+ */
+    title: string;
 
     voteAverage: number;
 
-    voteCount: number;
+    posterPath: string;
+
+    overview: string;
+
 }
