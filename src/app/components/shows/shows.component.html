@@ -1,5 +1,9 @@
 <div class="shows-page__show-card show-card">shows work!</div>
-<div class="shows-page__show-card show-card" *ngFor="let show of shows" [style.backgroundImage]="'url('+show.posterPath+')'">
+<div class="shows-page__show-card show-card"
+*ngFor="let show of shows"
+[style.backgroundImage]="'url('+show.posterPath+')'"
+[title]="show.title">
+
     <div class="show-card__info">i</div>
     <div class="show-card__addition">+</div>
     <div class="show-card__overview">
