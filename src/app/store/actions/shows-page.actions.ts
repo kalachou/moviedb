@@ -3,9 +3,9 @@ import { Action } from '@ngrx/store';
 import { TvShow } from '../../models/tvshow.interface';
 
 export enum EShowsPageActions {
-    LoadPage = 'Load page',
-    LoadPageSuccess = 'Loading page is succesful',
-    LoadPageFail = 'Loading page is failed',
+    LoadPage = 'Load shows page',
+    LoadPageSuccess = 'Loading shows page is successful',
+    LoadPageFail = 'Loading shows page is failed',
 }
 
 export class LoadPage implements Action {
