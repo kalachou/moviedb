@@ -4,14 +4,14 @@ import { ShowsPage } from '../../models/shows-page.interface';
 import { TvShow } from '../../models/tvshow.interface';
 
 export interface ShowsPageState {
-    selectedShow: TvShow;
-    router?: RouterReducerState;
-    page: number;
-    items: TvShow[];
+  entities: TvShow[];
+  currentPage: number;
+  selectedShow: TvShow;
+  router?: RouterReducerState;
 }
 
-export const initialShowsPageState: ShowsPage = {
-    page: 1,
-    items: [],
-    selectedShow: null
+export const initialShowsPageState: ShowsPageState = {
+  currentPage: 0,
+  entities: [],
+  selectedShow: null
 };

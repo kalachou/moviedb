@@ -11,12 +11,12 @@ export const showsPageReducers = (
         case EShowsPageActions.LoadPage:
             return {
                 ...state,
-                page: action.payload
+                currentPage: action.payload
             };
         case EShowsPageActions.LoadPageSuccess:
             return {
                 ...state,
-                items: state.items.concat(action.payload),
+                entities: state.entities.concat(action.payload),
             };
 
         case EShowsPageActions.LoadPageFail:

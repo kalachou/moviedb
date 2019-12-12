@@ -6,7 +6,7 @@ const selectShows = (state: AppState) => state.shows;
 
 export const selectShowsList = createSelector(
     selectShows,
-    (state: ShowsPageState) => state.items
+    (state: ShowsPageState) => state.entities
 );
 
 export const selectSelectedShow = createSelector(
@@ -16,5 +16,5 @@ export const selectSelectedShow = createSelector(
 
 export const selectCurrentPage = createSelector(
     selectShows,
-    (state: ShowsPageState) => state.page
+    (state: ShowsPageState) => state.currentPage
 );
