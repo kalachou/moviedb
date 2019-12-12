@@ -43,9 +43,8 @@ export class SearchService {
       this.onSearchTurnOff.emit(true);
     } else {
       this.onSearchTurnOff.emit(false);
-      this.onQuickFilterSearch.emit(this.filteredItemsArray);
     }
-
+    this.onQuickFilterSearch.emit(this.filteredItemsArray);
   }
 
   public advancedSearch() {
