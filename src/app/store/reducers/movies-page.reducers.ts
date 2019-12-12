@@ -4,28 +4,26 @@ import { initialMoviesPageState, MoviesPageState } from '../state/movies-page.st
 
 
 export const moviesPageReducers = (
-    state = initialMoviesPageState,
-    action: MoviesPageActions
+  state = initialMoviesPageState,
+  action: MoviesPageActions
 ): MoviesPageState => {
-    switch (action.type) {
-        case EMoviesPageActions.LoadPage:
-            return {
-                ...state,
-                page: action.payload
-            };
-        case EMoviesPageActions.LoadPageSucces:
-            return {
-                ...state,
-                items: state.items.concat(action.payload),
-            };
+  switch (action.type) {
+    case EMoviesPageActions.LoadPage:
+      return {
+        ...state,
+        page: action.payload
+      };
+    case EMoviesPageActions.LoadPageSucces:
+      return {
+        ...state,
+        items: state.items.concat(action.payload),
+      };
 
-        /*         case EMoviesPageActions.LoadPageFail:
-                    return {
-                        items: null,
-                        page: null
-                    }; */
+    case EMoviesPageActions.LoadPageFail:
+      console.log(action.payload);
+      return state;
 
-        default :
-            return state;
-    }
+    default:
+      return state;
+  }
 };

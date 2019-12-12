@@ -20,6 +20,7 @@ export class LoadPageSucces implements Action {
 
 export class LoadPageFail implements Action {
     public readonly type = EMoviesPageActions.LoadPageFail;
+    constructor(public payload: Error) {}
 }
 
 export type MoviesPageActions = LoadPage | LoadPageSucces | LoadPageFail;

@@ -28,7 +28,7 @@ export class MoviesPageEffects {
           }));
           return new LoadPageSucces(moviesChunk);
         }),
-        // catchError(err => new LoadPageFail(err))
+        catchError(err => of(new LoadPageFail(err)))
       );
     })
   );

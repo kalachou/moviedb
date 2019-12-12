@@ -4,6 +4,7 @@ import { ShowsService } from '../../services/shows.service';
 import { Injectable } from '@angular/core';
 import { EShowsPageActions, LoadPage, LoadPageSuccess, LoadPageFail } from '../actions/shows-page.actions';
 import { TvShow } from '../../models/tvshow.interface';
+import { of } from 'rxjs/internal/observable/of';
 
 @Injectable()
 export class ShowsPageEffects {
@@ -28,7 +29,7 @@ export class ShowsPageEffects {
                     }));
                     return new LoadPageSuccess(showsChunk);
                 }),
-                catchError(err => new LoadPageFail(err))
+                catchError(err => of(new LoadPageFail(err)))
             );
         })
     );
