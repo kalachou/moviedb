@@ -2,5 +2,6 @@
 *ngFor="let addedItem of library"
 [item]="addedItem"
 [style.backgroundImage]="'url('+addedItem.posterPath+')'"
+[title]="addedItem.title"
 (toggleLibraryEvent)="toggleLibrary($event)">
 </app-card>
