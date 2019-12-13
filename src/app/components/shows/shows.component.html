@@ -1,15 +1,7 @@
-<div class="shows-page__show-card show-card">shows work!</div>
-<div class="shows-page__show-card show-card"
+<app-card class="shows-page__card"
 *ngFor="let show of shows"
+[item]="show"
 [style.backgroundImage]="'url('+show.posterPath+')'"
-[title]="show.title">
-
-    <div class="show-card__info">i</div>
-    <div class="show-card__addition">+</div>
-    <div class="show-card__overview">
-
-        <p>{{show.title}}</p>
-        <p>{{show.voteAverage}}</p>
-        <p>{{show.overview}}</p>
-    </div>
-</div>
+[title]="show.title"
+(toggleLibrary)="toggleLibrary($event)">
+</app-card>

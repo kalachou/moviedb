@@ -1,0 +1,54 @@
+$card--height: 450px
+$card--width: 300px
+$card--border-radius: 0.05 * $card--height
+$overview--top-padding: 0.1 * $card--height
+:host
+  position: relative
+  height: $card--height
+  width: $card--width
+  background-size: cover
+  border-radius: $card--border-radius
+  cursor: pointer
+
+  .card
+    &__overview
+      height: $card--height - $overview--top-padding
+      width: $card--width
+      border-radius: $card--border-radius
+      position: absolute
+      top: $overview--top-padding
+      opacity: 0
+      font-size: 1.2rem
+      font-weight: bold
+      color: lime
+      padding: 5%
+      box-sizing: border-box
+      overflow-y: auto
+
+    &__info, &__addition
+      width: $card--border-radius
+      height: $card--border-radius
+      position: absolute
+      top: 2.5%
+      border-radius: 50%
+      opacity: 0
+      text-align: center
+      background-color: olive
+      line-height: 100%
+
+    &__info
+      right: 15%
+
+    &__addition
+      right: 5%
+
+    &__info:hover ~ .card__overview
+      opacity: 0.8
+      background-color: black
+
+    &__addition_added
+      background-color: green
+
+  &:hover
+    .card__info, .card__addition
+      opacity: 0.9

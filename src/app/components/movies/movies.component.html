@@ -1,14 +1,6 @@
-<div class="movies-page__movie-card movie-card"
+<app-card class="movies-page__card"
 *ngFor="let movie of movies"
+[item]="movie"
 [style.backgroundImage]="'url('+movie.posterPath+')'"
 [title]="movie.title">
-
-    <div class="movie-card__info">i</div>
-    <div class="movie-card__addition">+</div>
-    <div class="movie-card__overview">
-
-        <p>{{movie.title}}</p>
-        <p>{{movie.voteAverage}}</p>
-        <p>{{movie.overview}}</p>
-    </div>
-</div>
+</app-card>

@@ -23,6 +23,7 @@ import { SearchComponent } from './components/search/search.component';
 import { SearchService } from './services/search.service';
 import { ShowsService } from './services/shows.service';
 import { ShowsPageEffects } from './store/effects/shows-page.effects';
+import { CardComponent } from './components/card/card.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { ShowsPageEffects } from './store/effects/shows-page.effects';
     MovieInfoComponent,
     ShowInfoComponent,
     NavigationComponent,
-    SearchComponent
+    SearchComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
