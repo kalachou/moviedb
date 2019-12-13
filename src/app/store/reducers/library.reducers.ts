@@ -1,6 +1,6 @@
 import { ELibraryActions } from '../actions/library.actions';
 import { LibraryActions } from '../actions/library.actions';
-import { initialLibraryState, LibraryState } from '../state/library.satate';
+import { initialLibraryState, LibraryState } from '../state/library.state';
 
 
 export const libraryReducers = (

@@ -1,6 +1,6 @@
 import { RouterReducerState } from '@ngrx/router-store';
 
-import { LibraryState } from './library.satate';
+import { LibraryState } from './library.state';
 import { MoviesPageState } from './movies-page.state';
 import { ShowsPageState } from './shows-page.state';
 

@@ -1,1 +1,6 @@
-<p>library works!</p>
+<app-card class="library-page__card"
+*ngFor="let addedItem of library"
+[item]="addedItem"
+[style.backgroundImage]="'url('+addedItem.posterPath+')'"
+[title]="addedItem.title">
+</app-card>

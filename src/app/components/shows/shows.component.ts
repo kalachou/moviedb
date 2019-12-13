@@ -6,6 +6,9 @@ import { LoadPage } from '../../store/actions/shows-page.actions';
 import { selectCurrentPage, selectShowsList } from '../../store/selectors/shows-page.selectors';
 import { SearchService } from '../../services/search.service';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { Movie } from 'src/app/models/movie.interface';
+import { AddItem, DeleteItem } from 'src/app/store/actions/library.actions';
+import { selectLibraryList } from 'src/app/store/selectors/library.selectors';
 
 @Component({
   selector: 'app-shows',
@@ -16,6 +19,7 @@ export class ShowsComponent implements OnInit, OnDestroy {
   private nextPage: number;
   private searchIsOff = true;
   private subscription: Subscription = new Subscription();
+  private libraryList: (TvShow | Movie)[] = [];
 
   constructor(private store: Store<AppState>, private search: SearchService) { }
   @Input() shows: TvShow[];
@@ -48,10 +52,14 @@ export class ShowsComponent implements OnInit, OnDestroy {
     const filterSearchSwitcherSubscription = this.search.onSearchTurnOff
       .subscribe((x: boolean) => this.searchIsOff = x);
 
+    const librarySubscription = this.store.select(selectLibraryList)
+    .subscribe((list: (TvShow|Movie)[]) => {this.libraryList = list; });
+
     this.subscription.add(showsSubscription);
     this.subscription.add(pageSubscription);
     this.subscription.add(filterSearchSubscription);
     this.subscription.add(filterSearchSwitcherSubscription);
+    this.subscription.add(librarySubscription);
   }
 
   ngOnDestroy() {
@@ -66,5 +74,17 @@ export class ShowsComponent implements OnInit, OnDestroy {
     this.store.dispatch(new LoadPage(this.nextPage));
   }
 
+  addToLibrary(item: TvShow|Movie) {
+    this.store.dispatch(new AddItem(item));
+  }
+
+  deleteFromLibrary(item: TvShow|Movie) {
+    this.store.dispatch(new DeleteItem(item));
+  }
+  toggleLibrary(item: TvShow|Movie) {
+    this.libraryList.find(x => x.title === item.title)
+    ? this.deleteFromLibrary(item)
+    : this.addToLibrary(item);
+  }
 
 }

@@ -9,6 +9,6 @@ export interface LibraryState {
     items: (Movie|TvShow)[];
 }
 
-export const initialLibraryState: Library = {
-    items: null
+export const initialLibraryState: LibraryState = {
+    items: []
 };
