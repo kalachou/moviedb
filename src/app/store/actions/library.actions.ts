@@ -6,6 +6,8 @@ import { TvShow } from '../../models/tvshow.interface';
 export enum ELibraryActions {
     AddItem = 'Add item to library',
     DeleteItem = 'Delete item from library',
+    ToggleItem = 'Toggle the item in library',
+    FilterLibrarySearch = 'Search items in library'
 }
 
 export class AddItem implements Action {
@@ -18,4 +20,9 @@ export class DeleteItem implements Action {
     constructor(public payload: (Movie|TvShow)) {}
 }
 
-export type LibraryActions = AddItem | DeleteItem;
+export class ToggleItem implements Action {
+  public readonly type = ELibraryActions.ToggleItem;
+  constructor(public payload: (Movie|TvShow)) {}
+}
+
+export type LibraryActions = AddItem | DeleteItem | ToggleItem | FilterLibrarySearch;

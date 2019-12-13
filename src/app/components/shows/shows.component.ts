@@ -74,17 +74,8 @@ export class ShowsComponent implements OnInit, OnDestroy {
     this.store.dispatch(new LoadPage(this.nextPage));
   }
 
-  addToLibrary(item: TvShow|Movie) {
-    this.store.dispatch(new AddItem(item));
-  }
-
-  deleteFromLibrary(item: TvShow|Movie) {
-    this.store.dispatch(new DeleteItem(item));
-  }
-  toggleLibrary(item: TvShow|Movie) {
-    this.libraryList.find(x => x.title === item.title)
-    ? this.deleteFromLibrary(item)
-    : this.addToLibrary(item);
+  toggleLibrary(item: TvShow | Movie) {
+    this.store.dispatch(new ToggleItem(item));
   }
 
 }

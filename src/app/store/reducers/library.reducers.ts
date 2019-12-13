@@ -16,7 +16,24 @@ export const libraryReducers = (
         case ELibraryActions.DeleteItem:
             return {
                 ...state,
-                items: state.items.filter(x => JSON.stringify(x) !== JSON.stringify(action.payload))
+    case ELibraryActions.ToggleItem:
+      console.log('toggle', action.payload);
+      return state.items.find(x => x.title === action.payload.title)
+        ? {
+          ...state,
+          items: state.items
+            .filter(x => JSON.stringify(x) !== JSON.stringify(action.payload)),
+          filteredItems: state.filteredItems
+            .filter(x => JSON.stringify(x) !== JSON.stringify(action.payload))
+        }
+        : {
+          ...state,
+          filteredItems: state.filteredItems
+            .concat([action.payload]
+              .filter(x => x.title === state.filter)),
+          items: state.items.concat(action.payload)
+        };
+    case ELibraryActions.FilterLibrarySearch:
             };
         default :
             return state;

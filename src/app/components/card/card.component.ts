@@ -10,19 +10,15 @@ import { Movie } from 'src/app/models/movie.interface';
 export class CardComponent implements OnInit {
 
   @Input()item: TvShow|Movie;
-  @Output() toggleLibrary = new EventEmitter<TvShow|Movie>();
+  @Output() toggleLibraryEvent = new EventEmitter<TvShow|Movie>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  addToLibrary(item: TvShow|Movie) {
-    this.toggleLibrary.emit(item);
-  }
-
-  deleteFromLibrary(item: TvShow|Movie) {
-    this.toggleLibrary.emit(item);
+  toggleLibrary(item: TvShow|Movie) {
+    this.toggleLibraryEvent.emit(item);
   }
 
 }

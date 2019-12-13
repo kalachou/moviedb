@@ -25,7 +25,7 @@ $overview--top-padding: 0.1 * $card--height
       box-sizing: border-box
       overflow-y: auto
 
-    &__info, &__addition
+    &__info, &__toggle-button
       width: $card--border-radius
       height: $card--border-radius
       position: absolute
@@ -39,16 +39,16 @@ $overview--top-padding: 0.1 * $card--height
     &__info
       right: 15%
 
-    &__addition
+    &__toggle-button
       right: 5%
 
     &__info:hover ~ .card__overview
       opacity: 0.8
       background-color: black
 
-    &__addition_added
+    &__toggle-button_added
       background-color: green
 
   &:hover
-    .card__info, .card__addition
+    .card__info, .card__toggle-button
       opacity: 0.9

@@ -66,5 +66,8 @@ export class MoviesComponent implements OnInit, OnDestroy {
     this.store.dispatch(new LoadPage(this.nextPage));
   }
 
+  toggleLibrary(item: Movie) {
+    this.store.dispatch(new ToggleItem(item));
+  }
 
 }

@@ -38,4 +38,8 @@ export class LibraryComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  toggleLibrary(item: TvShow|Movie) {
+    this.store.dispatch(new ToggleItem(item));
+  }
+
 }

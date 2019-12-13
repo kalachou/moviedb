@@ -2,5 +2,5 @@
 *ngFor="let movie of movies"
 [item]="movie"
 [style.backgroundImage]="'url('+movie.posterPath+')'"
-[title]="movie.title">
+(toggleLibraryEvent)="toggleLibrary($event)">
 </app-card>
