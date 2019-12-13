@@ -7,7 +7,7 @@ import { selectCurrentPage, selectShowsList } from '../../store/selectors/shows-
 import { SearchService } from '../../services/search.service';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { Movie } from 'src/app/models/movie.interface';
-import { AddItem, DeleteItem } from 'src/app/store/actions/library.actions';
+import { ToggleItem } from 'src/app/store/actions/library.actions';
 import { selectLibraryList } from 'src/app/store/selectors/library.selectors';
 
 @Component({
@@ -21,7 +21,29 @@ export class ShowsComponent implements OnInit, OnDestroy {
   private subscription: Subscription = new Subscription();
   private libraryList: (TvShow | Movie)[] = [];
 
-  constructor(private store: Store<AppState>, private search: SearchService) { }
+  constructor(private store: Store<AppState>, private search: SearchService) {
+    const showsSubscription = this.store.select(selectShowsList)
+      .subscribe(x => {
+        this.shows = x;
+      });
+    const pageSubscription = this.store.select(selectCurrentPage)
+      .subscribe((res: number) => this.nextPage = res + 1);
+
+    this.search.setShowedPage('shows');
+    const filterSearchSubscription = this.search.onQuickFilterSearch
+      .subscribe((x: TvShow[]) => this.shows = x);
+    const filterSearchSwitcherSubscription = this.search.onSearchTurnOff
+      .subscribe((x: boolean) => this.searchIsOff = x);
+
+    const librarySubscription = this.store.select(selectLibraryList)
+      .subscribe((list: (TvShow | Movie)[]) => { this.libraryList = list; });
+
+    this.subscription.add(showsSubscription);
+    this.subscription.add(pageSubscription);
+    this.subscription.add(filterSearchSubscription);
+    this.subscription.add(filterSearchSwitcherSubscription);
+    this.subscription.add(librarySubscription);
+  }
   @Input() shows: TvShow[];
 
   @Output() showSelected: EventEmitter<number> = new EventEmitter();
@@ -38,28 +60,9 @@ export class ShowsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.store.dispatch(new LoadPage());
-    const showsSubscription = this.store.select(selectShowsList)
-      .subscribe(x => {
-        this.shows = x;
-      });
-    const pageSubscription = this.store.select(selectCurrentPage)
-      .subscribe((res: number) => this.nextPage = res + 1);
-
-    this.search.setShowedPage('shows');
-    const filterSearchSubscription = this.search.onQuickFilterSearch
-      .subscribe((x: TvShow[]) => this.shows = x);
-    const filterSearchSwitcherSubscription = this.search.onSearchTurnOff
-      .subscribe((x: boolean) => this.searchIsOff = x);
-
-    const librarySubscription = this.store.select(selectLibraryList)
-    .subscribe((list: (TvShow|Movie)[]) => {this.libraryList = list; });
-
-    this.subscription.add(showsSubscription);
-    this.subscription.add(pageSubscription);
-    this.subscription.add(filterSearchSubscription);
-    this.subscription.add(filterSearchSwitcherSubscription);
-    this.subscription.add(librarySubscription);
+    if (!this.shows.length) {
+      this.store.dispatch(new LoadPage());
+    }
   }
 
   ngOnDestroy() {

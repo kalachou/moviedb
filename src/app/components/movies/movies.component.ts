@@ -6,6 +6,7 @@ import { LoadPage } from '../../store/actions/movies-page.actions';
 import { selectCurrentPage, selectMoviesList } from '../../store/selectors/movies-page.selectors';
 import { SearchService } from '../../services/search.service';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { ToggleItem } from 'src/app/store/actions/library.actions';
 
 @Component({
   selector: 'app-movies',
@@ -17,7 +18,23 @@ export class MoviesComponent implements OnInit, OnDestroy {
   private searchIsOff = true;
   private subscription: Subscription = new Subscription();
 
-  constructor(private store: Store<AppState>, private search: SearchService) { }
+  constructor(private store: Store<AppState>, private search: SearchService) {
+    const moviesSubscription = this.store.select(selectMoviesList)
+      .subscribe(x => this.movies = x);
+    const pageSubscription = this.store.select(selectCurrentPage)
+      .subscribe((res: number) => this.nextPage = res + 1);
+
+    this.search.setShowedPage('movies');
+    const filterSearchSubscription = this.search.onQuickFilterSearch
+      .subscribe((x: Movie[]) => this.movies = x);
+    const filterSearchSwitcherSubscription = this.search.onSearchTurnOff
+      .subscribe((x: boolean) => this.searchIsOff = x);
+
+    this.subscription.add(moviesSubscription);
+    this.subscription.add(pageSubscription);
+    this.subscription.add(filterSearchSubscription);
+    this.subscription.add(filterSearchSwitcherSubscription);
+  }
   @Input() movies: Movie[];
 
   @Output() movieSelected: EventEmitter<number> = new EventEmitter();
@@ -34,24 +51,9 @@ export class MoviesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.store.dispatch(new LoadPage());
-    const moviesSubscription = this.store.select(selectMoviesList)
-      .subscribe(x => {
-        this.movies = x;
-      });
-    const pageSubscription = this.store.select(selectCurrentPage)
-      .subscribe((res: number) => this.nextPage = res + 1);
-
-    this.search.setShowedPage('movies');
-    const filterSearchSubscription = this.search.onQuickFilterSearch
-      .subscribe((x: Movie[]) => this.movies = x);
-    const filterSearchSwitcherSubscription = this.search.onSearchTurnOff
-      .subscribe((x: boolean) => this.searchIsOff = x);
-
-    this.subscription.add(moviesSubscription);
-    this.subscription.add(pageSubscription);
-    this.subscription.add(filterSearchSubscription);
-    this.subscription.add(filterSearchSwitcherSubscription);
+    if (!this.movies.length) {
+      this.store.dispatch(new LoadPage());
+    }
   }
 
   ngOnDestroy() {
