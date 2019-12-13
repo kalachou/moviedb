@@ -1,5 +1,5 @@
 <app-card class="library-page__card"
-*ngFor="let addedItem of library"
+*ngFor="let addedItem of library$ | async"
 [item]="addedItem"
 [style.backgroundImage]="'url('+addedItem.posterPath+')'"
 [title]="addedItem.title"

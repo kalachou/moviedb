@@ -9,3 +9,8 @@ export const selectLibraryList = createSelector(
   selectLibrary,
     (state: LibraryState) => state.items
 );
+
+export const selectLibraryFilteredList = createSelector(
+  selectLibrary,
+    (state: LibraryState) => state.filteredItems
+);

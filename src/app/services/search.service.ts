@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../store/state/app.state';
 import { selectMoviesList } from '../store/selectors/movies-page.selectors';
 import { selectShowsList } from '../store/selectors/shows-page.selectors';
+import { FilterLibrarySearch } from '../store/actions/library.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class SearchService {
   private loadedShowsArray: TvShow[];
   private filteredItemsArray: (Movie | TvShow)[];
   private showedPage = 'movies';
+  private storedSearchInput: string;
 
   public onQuickFilterSearch: EventEmitter<(Movie | TvShow)[]> = new EventEmitter();
   public onSearchTurnOff: EventEmitter<boolean> = new EventEmitter();
@@ -28,6 +30,7 @@ export class SearchService {
   }
 
   public quickFilterSearch(searchInput: string) {
+    this.storedSearchInput = searchInput;
     const regExp = new RegExp(searchInput, 'i');
     if (this.showedPage === 'movies') {
       this.filteredItemsArray = this.loadedMoviesArray.filter(
@@ -39,12 +42,20 @@ export class SearchService {
         item => regExp.test(item.title)
       );
     }
+    if (this.showedPage === 'library') {
+      console.log('library', this.store);
+      this.store.dispatch(new FilterLibrarySearch(searchInput));
+    }
     if (!searchInput) {
       this.onSearchTurnOff.emit(true);
     } else {
       this.onSearchTurnOff.emit(false);
     }
     this.onQuickFilterSearch.emit(this.filteredItemsArray);
+  }
+
+  public getStoredSearchInput() {
+    return this.storedSearchInput;
   }
 
   public advancedSearch() {

@@ -25,4 +25,9 @@ export class ToggleItem implements Action {
   constructor(public payload: (Movie|TvShow)) {}
 }
 
+export class FilterLibrarySearch implements Action {
+  public readonly type = ELibraryActions.FilterLibrarySearch;
+  constructor(public payload: string) {}
+}
+
 export type LibraryActions = AddItem | DeleteItem | ToggleItem | FilterLibrarySearch;

@@ -4,18 +4,21 @@ import { initialLibraryState, LibraryState } from '../state/library.state';
 
 
 export const libraryReducers = (
-    state = initialLibraryState,
-    action: LibraryActions
+  state = initialLibraryState,
+  action: LibraryActions
 ): LibraryState => {
-    switch (action.type) {
-        case ELibraryActions.AddItem:
-            return {
-                ...state,
-                items: state.items.concat(action.payload)
-            };
-        case ELibraryActions.DeleteItem:
-            return {
-                ...state,
+  switch (action.type) {
+    case ELibraryActions.AddItem:
+      return {
+        ...state,
+        items: state.items.concat(action.payload)
+      };
+    case ELibraryActions.DeleteItem:
+      return {
+        ...state,
+        items: state.items
+          .filter(x => JSON.stringify(x) !== JSON.stringify(action.payload))
+      };
     case ELibraryActions.ToggleItem:
       console.log('toggle', action.payload);
       return state.items.find(x => x.title === action.payload.title)
@@ -34,8 +37,15 @@ export const libraryReducers = (
           items: state.items.concat(action.payload)
         };
     case ELibraryActions.FilterLibrarySearch:
-            };
-        default :
-            return state;
-    }
+      return {
+        ...state,
+        filter: action.payload,
+        filteredItems: state.items.filter(x => {
+          const regExp = new RegExp(action.payload, 'i');
+          return regExp.test(x.title);
+        })
+      };
+    default:
+      return state;
+  }
 };
