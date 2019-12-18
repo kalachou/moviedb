@@ -10,6 +10,11 @@ export const selectLibraryList = createSelector(
     (state: LibraryState) => state.items
 );
 
+export const selectLibraryListLength = createSelector(
+  selectLibrary,
+    (state: LibraryState) => state.items.length
+);
+
 export const selectLibraryFilteredList = createSelector(
   selectLibrary,
     (state: LibraryState) => state.filteredItems

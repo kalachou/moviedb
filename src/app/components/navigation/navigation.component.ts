@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { AppState } from '../../store/state/app.state';
+import { Store } from '@ngrx/store';
+import { selectLibraryListLength } from '../../store/selectors/library.selectors';
 
 @Component({
   selector: 'app-navigation',
@@ -6,8 +9,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navigation.component.sass']
 })
 export class NavigationComponent implements OnInit {
+  @Input() libraryCount$ = this.store.select(selectLibraryListLength);
 
-  constructor() { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
   }
