@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs/internal/Subscription';
 import { Movie } from 'src/app/models/movie.interface';
 import { ToggleItem } from 'src/app/store/actions/library.actions';
 import { selectLibraryList } from 'src/app/store/selectors/library.selectors';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-shows',
@@ -20,8 +21,12 @@ export class ShowsComponent implements OnInit, OnDestroy {
   private searchIsOff = true;
   private subscription: Subscription = new Subscription();
   private libraryList: (TvShow | Movie)[] = [];
+  private id: number;
 
-  constructor(private store: Store<AppState>, private search: SearchService) {
+  constructor(private store: Store<AppState>,
+              private search: SearchService,
+              private activateRoute: ActivatedRoute,
+              private router: Router) {
     const showsSubscription = this.store.select(selectShowsList)
       .subscribe(x => {
         this.shows = x;
@@ -43,6 +48,7 @@ export class ShowsComponent implements OnInit, OnDestroy {
     this.subscription.add(filterSearchSubscription);
     this.subscription.add(filterSearchSwitcherSubscription);
     this.subscription.add(librarySubscription);
+    this.subscription.add(activateRoute.params.subscribe(params => this.id = params['id']));
   }
   @Input() shows: TvShow[];
 
@@ -71,6 +77,7 @@ export class ShowsComponent implements OnInit, OnDestroy {
 
   navigateToShow(id: number) {
     this.showSelected.emit(id);
+    this.router.navigate(['shows/info', id]);
   }
 
   loadNextPage() {

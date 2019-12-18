@@ -23,6 +23,24 @@ export const showsPageReducers = (
             console.log(action.payload);
             return state;
 
+        case EShowsPageActions.LoadShowInfo:
+            return {
+                ...state,
+                selectedShowID: action.payload
+            };
+
+        case EShowsPageActions.LoadShowInfoSuccess:
+            console.log('reducer', state);
+            return {
+                ...state,
+                selectedShow: action.payload
+            };
+
+        case EShowsPageActions.LoadShowInfoFail:
+            console.log(action.payload);
+            return state;
+
+
         default:
             return state;
     }

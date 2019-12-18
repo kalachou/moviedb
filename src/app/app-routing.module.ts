@@ -14,7 +14,7 @@ const movieRoutes: Routes = [
 ];
 
 const showRoutes: Routes = [
-  { path: 'info', component: ShowInfoComponent }
+  { path: 'info/:id', component: ShowInfoComponent }
 ];
 
 const appRoutes: Routes = [

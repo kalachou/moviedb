@@ -1,7 +1,11 @@
+<router-outlet></router-outlet>
 <app-card class="shows-page__card"
-*ngFor="let show of shows"
+*ngFor="let show of shows; index as i"
 [item]="show"
 [style.backgroundImage]="'url('+show.posterPath+')'"
 [title]="show.title"
-(toggleLibraryEvent)="toggleLibrary($event)">
+(toggleLibraryEvent)="toggleLibrary($event)"
+(click)="navigateToShow(show.id)"
+[routerLink]="['info', show.id]"
+routerLinkActive="page__card_selected">
 </app-card>
