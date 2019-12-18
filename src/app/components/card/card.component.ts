@@ -17,8 +17,9 @@ export class CardComponent implements OnInit {
   ngOnInit() {
   }
 
-  toggleLibrary(item: TvShow|Movie) {
+  toggleLibrary($event, item: TvShow|Movie) {
     this.toggleLibraryEvent.emit(item);
+    $event.stopPropagation();
   }
 
 }
