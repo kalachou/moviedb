@@ -19,3 +19,8 @@ export const selectLibraryFilteredList = createSelector(
   selectLibrary,
     (state: LibraryState) => state.filteredItems
 );
+
+export const selectLibraryUnseenCount = createSelector(
+  selectLibrary,
+    (state: LibraryState) => state.unseenItems
+);

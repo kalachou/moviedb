@@ -13,12 +13,14 @@ export const libraryReducers = (
         ...state,
         items: state.items.concat(action.payload)
       };
+
     case ELibraryActions.DeleteItem:
       return {
         ...state,
         items: state.items
           .filter(x => JSON.stringify(x) !== JSON.stringify(action.payload))
       };
+
     case ELibraryActions.ToggleItem:
       console.log('toggle', action.payload);
       return state.items.find(x => x.title === action.payload.title)
@@ -34,8 +36,16 @@ export const libraryReducers = (
           filteredItems: state.filteredItems
             .concat([action.payload]
               .filter(x => x.title === state.filter)),
-          items: state.items.concat(action.payload)
+          items: state.items.concat(action.payload),
+          unseenItems: state.unseenItems + 1
         };
+
+    case ELibraryActions.SeeItems:
+      return {
+        ...state,
+        unseenItems: 0
+      };
+
     case ELibraryActions.FilterLibrarySearch:
       return {
         ...state,
@@ -45,6 +55,7 @@ export const libraryReducers = (
           return regExp.test(x.title);
         })
       };
+
     default:
       return state;
   }

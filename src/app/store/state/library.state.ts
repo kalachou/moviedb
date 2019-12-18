@@ -8,10 +8,12 @@ export interface LibraryState {
     items: (Movie|TvShow)[];
     filter: string;
     filteredItems: (Movie|TvShow)[];
+    unseenItems: number;
 }
 
 export const initialLibraryState: LibraryState = {
     items: [],
     filter: '',
-    filteredItems: []
+    filteredItems: [],
+    unseenItems: 0
 };

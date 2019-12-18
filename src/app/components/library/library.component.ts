@@ -6,6 +6,7 @@ import { Movie } from 'src/app/models/movie.interface';
 import { TvShow } from 'src/app/models/tvshow.interface';
 import { selectLibraryFilteredList } from 'src/app/store/selectors/library.selectors';
 import { ToggleItem, FilterLibrarySearch } from 'src/app/store/actions/library.actions';
+import { SeeItems } from '../../store/actions/library.actions';
 
 @Component({
   selector: 'app-library',
@@ -21,7 +22,7 @@ export class LibraryComponent implements OnInit {
 
   @Output() selectedItem: EventEmitter<number> = new EventEmitter();
   ngOnInit() {
-    console.log(this.store);
+    this.store.dispatch(new SeeItems());
   }
 
   toggleLibrary(item: TvShow|Movie) {
