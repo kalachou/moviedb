@@ -35,6 +35,10 @@ export const moviesPageReducers = (
         selectedMovie: action.payload
       };
 
+    case EMoviesPageActions.LoadMovieInfoFail:
+      console.log(action.payload);
+      return state;
+
     default:
       return state;
   }
