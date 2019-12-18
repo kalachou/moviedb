@@ -1,6 +1,5 @@
 import { RouterReducerState } from '@ngrx/router-store';
 
-import { ShowsPage } from '../../models/shows-page.interface';
 import { TvShow } from '../../models/tvshow.interface';
 
 export interface ShowsPageState {

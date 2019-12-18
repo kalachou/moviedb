@@ -10,7 +10,7 @@ import { MovieInfoComponent } from './components/movie-info/movie-info.component
 import { ShowInfoComponent } from './components/show-info/show-info.component';
 
 const movieRoutes: Routes = [
-  { path: 'info', component: MovieInfoComponent }
+  { path: 'info/:id', component: MovieInfoComponent }
 ];
 
 const showRoutes: Routes = [

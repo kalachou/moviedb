@@ -5,6 +5,7 @@ import { MoviesPage } from '../../models/movies-page.interface';
 
 export interface MoviesPageState {
     selectedMovie: Movie;
+    selectedMovieID: number;
     router?: RouterReducerState;
     page: number;
     items: Movie[];

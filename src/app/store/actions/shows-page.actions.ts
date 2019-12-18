@@ -3,24 +3,24 @@ import { Action } from '@ngrx/store';
 import { TvShow } from '../../models/tvshow.interface';
 
 export enum EShowsPageActions {
-    LoadPage = 'Load shows page',
-    LoadPageSuccess = 'Loading shows page is successful',
-    LoadPageFail = 'Loading shows page is failed',
+    LoadShowsPage = 'Load shows page',
+    LoadShowsPageSuccess = 'Loading shows page is successful',
+    LoadShowsPageFail = 'Loading shows page is failed',
 }
 
-export class LoadPage implements Action {
-    public readonly type = EShowsPageActions.LoadPage;
+export class LoadShowsPage implements Action {
+    public readonly type = EShowsPageActions.LoadShowsPage;
     constructor(public payload: number = 1) {}
 }
 
-export class LoadPageSuccess implements Action {
-    public readonly type = EShowsPageActions.LoadPageSuccess;
+export class LoadShowsPageSuccess implements Action {
+    public readonly type = EShowsPageActions.LoadShowsPageSuccess;
     constructor(public payload: TvShow[]) {}
 }
 
-export class LoadPageFail implements Action {
-    public readonly type = EShowsPageActions.LoadPageFail;
+export class LoadShowsPageFail implements Action {
+    public readonly type = EShowsPageActions.LoadShowsPageFail;
     constructor(public payload: Error) {}
 }
 
-export type ShowsPageActions = LoadPage | LoadPageSuccess | LoadPageFail;
+export type ShowsPageActions = LoadShowsPage | LoadShowsPageSuccess | LoadShowsPageFail;

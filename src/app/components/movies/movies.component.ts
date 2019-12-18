@@ -2,11 +2,12 @@ import { Component, OnInit, Input, Output, EventEmitter, HostListener, OnDestroy
 import { Movie } from '../../models/movie.interface';
 import { Store, select } from '@ngrx/store';
 import { AppState } from '../../store/state/app.state';
-import { LoadPage } from '../../store/actions/movies-page.actions';
+import { LoadMoviesPage } from '../../store/actions/movies-page.actions';
 import { selectCurrentPage, selectMoviesList } from '../../store/selectors/movies-page.selectors';
 import { SearchService } from '../../services/search.service';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { ToggleItem } from 'src/app/store/actions/library.actions';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-movies',
@@ -17,8 +18,12 @@ export class MoviesComponent implements OnInit, OnDestroy {
   private nextPage: number;
   private searchIsOff = true;
   private subscription: Subscription = new Subscription();
+  private id: number;
 
-  constructor(private store: Store<AppState>, private search: SearchService) {
+  constructor(private store: Store<AppState>,
+              private search: SearchService,
+              private activateRoute: ActivatedRoute,
+              private router: Router) {
     const moviesSubscription = this.store.select(selectMoviesList)
       .subscribe(x => this.movies = x);
     const pageSubscription = this.store.select(selectCurrentPage)
@@ -34,6 +39,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
     this.subscription.add(pageSubscription);
     this.subscription.add(filterSearchSubscription);
     this.subscription.add(filterSearchSwitcherSubscription);
+    this.subscription.add(activateRoute.params.subscribe(params => this.id = params['id']));
   }
   @Input() movies: Movie[];
 
@@ -43,16 +49,16 @@ export class MoviesComponent implements OnInit, OnDestroy {
   onScroll(): void {
     if (this.searchIsOff
       && ((window.screen.height + window.pageYOffset) >= document.body.scrollHeight)) {
-      alert('you\'re at the bottom of the page, do we download next chunk of movies?');
-      console.log('first', this.nextPage, this.movies, this.store);
+      // confirm('you\'re at the bottom of the page, do we download next chunk of movies?');
+      // console.log('first', this.nextPage, this.movies, this.store);
       this.loadNextPage();
-      console.log('second', this.nextPage, this.movies, this.store);
+      // console.log('second', this.nextPage, this.movies, this.store);
     }
   }
 
   ngOnInit() {
     if (!this.movies.length) {
-      this.store.dispatch(new LoadPage());
+      this.store.dispatch(new LoadMoviesPage());
     }
   }
 
@@ -62,10 +68,12 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
   navigateToMovie(id: number) {
     this.movieSelected.emit(id);
+    this.router.navigate(['movies/info', id]);
+    console.log('selected');
   }
 
   loadNextPage() {
-    this.store.dispatch(new LoadPage(this.nextPage));
+    this.store.dispatch(new LoadMoviesPage(this.nextPage));
   }
 
   toggleLibrary(item: Movie) {

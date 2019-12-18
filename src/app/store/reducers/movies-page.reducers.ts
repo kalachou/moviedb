@@ -8,20 +8,25 @@ export const moviesPageReducers = (
   action: MoviesPageActions
 ): MoviesPageState => {
   switch (action.type) {
-    case EMoviesPageActions.LoadPage:
+    case EMoviesPageActions.LoadMoviesPage:
       return {
         ...state,
         page: action.payload
       };
-    case EMoviesPageActions.LoadPageSucces:
+    case EMoviesPageActions.LoadMoviesPageSucces:
       return {
         ...state,
         items: state.items.concat(action.payload),
       };
 
-    case EMoviesPageActions.LoadPageFail:
+    case EMoviesPageActions.LoadMoviesPageFail:
       console.log(action.payload);
       return state;
+    case EMoviesPageActions.LoadMovieInfo:
+      return {
+        ...state,
+        selectedMovieID: action.payload
+      };
 
     default:
       return state;

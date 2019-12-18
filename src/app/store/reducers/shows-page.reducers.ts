@@ -8,18 +8,18 @@ export const showsPageReducers = (
     action: ShowsPageActions
 ): ShowsPageState => {
     switch (action.type) {
-        case EShowsPageActions.LoadPage:
+        case EShowsPageActions.LoadShowsPage:
             return {
                 ...state,
                 currentPage: action.payload
             };
-        case EShowsPageActions.LoadPageSuccess:
+        case EShowsPageActions.LoadShowsPageSuccess:
             return {
                 ...state,
                 entities: state.entities.concat(action.payload),
             };
 
-        case EShowsPageActions.LoadPageFail:
+        case EShowsPageActions.LoadShowsPageFail:
             console.log(action.payload);
             return state;
 

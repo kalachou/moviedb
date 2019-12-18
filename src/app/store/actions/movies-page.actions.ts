@@ -3,24 +3,47 @@ import { Action } from '@ngrx/store';
 import { Movie } from '../../models/movie.interface';
 
 export enum EMoviesPageActions {
-    LoadPage = 'Load page',
-    LoadPageSucces = 'Loading page is succesful',
-    LoadPageFail = 'Loading page is failed',
+    LoadMoviesPage = 'Load page',
+    LoadMoviesPageSucces = 'Loading page is succesful',
+    LoadMoviesPageFail = 'Loading page is failed',
+    LoadMovieInfo = 'Loading info about a movie',
+    LoadMovieInfoSuccess = 'Loading info about a movie is successful',
+    LoadMovieInfoFail = 'Loading info about a movie is failed'
 }
 
-export class LoadPage implements Action {
-    public readonly type = EMoviesPageActions.LoadPage;
+export class LoadMoviesPage implements Action {
+    public readonly type = EMoviesPageActions.LoadMoviesPage;
     constructor(public payload: number = 1) {}
 }
 
-export class LoadPageSucces implements Action {
-    public readonly type = EMoviesPageActions.LoadPageSucces;
+export class LoadMoviesPageSucces implements Action {
+    public readonly type = EMoviesPageActions.LoadMoviesPageSucces;
     constructor(public payload: Movie[]) {}
 }
 
-export class LoadPageFail implements Action {
-    public readonly type = EMoviesPageActions.LoadPageFail;
+export class LoadMoviesPageFail implements Action {
+    public readonly type = EMoviesPageActions.LoadMoviesPageFail;
     constructor(public payload: Error) {}
 }
 
-export type MoviesPageActions = LoadPage | LoadPageSucces | LoadPageFail;
+export class LoadMovieInfo implements Action {
+  public readonly type = EMoviesPageActions.LoadMovieInfo;
+  constructor(public payload: number) {}
+}
+
+export class LoadMovieInfoSuccess implements Action {
+  public readonly type = EMoviesPageActions.LoadMovieInfoSuccess;
+  constructor(public payload: number) {}
+}
+
+export class LoadMovieInfoFail implements Action {
+  public readonly type = EMoviesPageActions.LoadMovieInfoSuccess;
+  constructor(public payload: number) {}
+}
+
+export type MoviesPageActions = LoadMoviesPage
+| LoadMoviesPageSucces
+| LoadMoviesPageFail
+| LoadMovieInfo
+| LoadMovieInfoSuccess
+| LoadMovieInfoFail;

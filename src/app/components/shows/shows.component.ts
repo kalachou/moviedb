@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, HostListener, OnDestroy
 import { TvShow } from '../../models/tvshow.interface';
 import { Store, select } from '@ngrx/store';
 import { AppState } from '../../store/state/app.state';
-import { LoadPage } from '../../store/actions/shows-page.actions';
+import { LoadShowsPage } from '../../store/actions/shows-page.actions';
 import { selectCurrentPage, selectShowsList } from '../../store/selectors/shows-page.selectors';
 import { SearchService } from '../../services/search.service';
 import { Subscription } from 'rxjs/internal/Subscription';
@@ -61,7 +61,7 @@ export class ShowsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     if (!this.shows.length) {
-      this.store.dispatch(new LoadPage());
+      this.store.dispatch(new LoadShowsPage());
     }
   }
 
@@ -74,7 +74,7 @@ export class ShowsComponent implements OnInit, OnDestroy {
   }
 
   loadNextPage() {
-    this.store.dispatch(new LoadPage(this.nextPage));
+    this.store.dispatch(new LoadShowsPage(this.nextPage));
   }
 
   toggleLibrary(item: TvShow | Movie) {

@@ -2,7 +2,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { ShowsService } from '../../services/shows.service';
 import { Injectable } from '@angular/core';
-import { EShowsPageActions, LoadPage, LoadPageSuccess, LoadPageFail } from '../actions/shows-page.actions';
+import { EShowsPageActions, LoadShowsPage, LoadShowsPageSuccess, LoadShowsPageFail } from '../actions/shows-page.actions';
 import { TvShow } from '../../models/tvshow.interface';
 import { of } from 'rxjs/internal/observable/of';
 
@@ -10,8 +10,8 @@ import { of } from 'rxjs/internal/observable/of';
 export class ShowsPageEffects {
     @Effect()
     getShowsPage$ = this.actions$.pipe(
-        ofType<LoadPage>(EShowsPageActions.LoadPage),
-        switchMap((action: LoadPage) => {
+        ofType<LoadShowsPage>(EShowsPageActions.LoadShowsPage),
+        switchMap((action: LoadShowsPage) => {
             const pageNumber = action.payload;
             let showsChunk: TvShow[];
             let resultRequest: any;
@@ -27,9 +27,9 @@ export class ShowsPageEffects {
                             : console.log(`No poster for this item and oter image is ${x.backdrop_path}`)),
                         overview: x.overview
                     }));
-                    return new LoadPageSuccess(showsChunk);
+                    return new LoadShowsPageSuccess(showsChunk);
                 }),
-                catchError(err => of(new LoadPageFail(err)))
+                catchError(err => of(new LoadShowsPageFail(err)))
             );
         })
     );

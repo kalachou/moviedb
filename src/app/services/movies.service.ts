@@ -28,5 +28,8 @@ export class MoviesService {
       this.http.get(`https://api.themoviedb.org/3/movie/popular?page=${page}&language=en-US&api_key=0de915948d52603403cc6102091989f6`)
     );
   }
+  public getMovieInfo(movieID: number) {
+    return this.http.get(`https://api.themoviedb.org/3/movie/${movieID}?api_key=0de915948d52603403cc6102091989f6&language=en-US`);
+  }
 
 }
