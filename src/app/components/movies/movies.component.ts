@@ -67,7 +67,6 @@ export class MoviesComponent implements OnInit, OnDestroy {
   navigateToMovie(id: number) {
     this.movieSelected.emit(id);
     this.router.navigate(['movies/info', id]);
-    console.log('selected');
   }
 
   loadNextPage() {
