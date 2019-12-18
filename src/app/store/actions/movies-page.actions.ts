@@ -33,12 +33,12 @@ export class LoadMovieInfo implements Action {
 
 export class LoadMovieInfoSuccess implements Action {
   public readonly type = EMoviesPageActions.LoadMovieInfoSuccess;
-  constructor(public payload: number) {}
+  constructor(public payload: Movie) {}
 }
 
 export class LoadMovieInfoFail implements Action {
-  public readonly type = EMoviesPageActions.LoadMovieInfoSuccess;
-  constructor(public payload: number) {}
+  public readonly type = EMoviesPageActions.LoadMovieInfoFail;
+  constructor(public payload: Error) {}
 }
 
 export type MoviesPageActions = LoadMoviesPage

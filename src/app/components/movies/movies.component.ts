@@ -50,9 +50,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
     if (this.searchIsOff
       && ((window.screen.height + window.pageYOffset) >= document.body.scrollHeight)) {
       // confirm('you\'re at the bottom of the page, do we download next chunk of movies?');
-      // console.log('first', this.nextPage, this.movies, this.store);
       this.loadNextPage();
-      // console.log('second', this.nextPage, this.movies, this.store);
     }
   }
 

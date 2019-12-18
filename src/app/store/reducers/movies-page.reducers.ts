@@ -22,10 +22,17 @@ export const moviesPageReducers = (
     case EMoviesPageActions.LoadMoviesPageFail:
       console.log(action.payload);
       return state;
+
     case EMoviesPageActions.LoadMovieInfo:
       return {
         ...state,
         selectedMovieID: action.payload
+      };
+
+    case EMoviesPageActions.LoadMovieInfoSuccess:
+      return {
+        ...state,
+        selectedMovie: action.payload
       };
 
     default:

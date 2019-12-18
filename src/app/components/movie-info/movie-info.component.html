@@ -1,1 +1,5 @@
-<p>{{id}}</p>
+<div *ngFor="let item of movie$ | async">
+    <p>{{item.title}}</p>
+    <p>{{item.voteAverage}}</p>
+    <p>{{item.overview}}</p>
+</div>

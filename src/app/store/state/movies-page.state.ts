@@ -14,5 +14,6 @@ export interface MoviesPageState {
 export const initialMoviesPageState: MoviesPage = {
     page: 0,
     items: [],
-    selectedMovie: null
+    selectedMovie: null,
+    selectedMovieID: null
 };
