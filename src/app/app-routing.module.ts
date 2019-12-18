@@ -17,6 +17,11 @@ const showRoutes: Routes = [
   { path: 'info/:id', component: ShowInfoComponent }
 ];
 
+const libraryRoutes: Routes = [
+  { path: 'movies/info/:id', component: MovieInfoComponent },
+  { path: 'shows/info/:id', component: ShowInfoComponent }
+];
+
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'movies', component: MoviesComponent, children: movieRoutes },

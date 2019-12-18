@@ -3,5 +3,6 @@
 [item]="addedItem"
 [style.backgroundImage]="'url('+addedItem.posterPath+')'"
 [title]="addedItem.title"
-(toggleLibraryEvent)="toggleLibrary($event)">
+(toggleLibraryEvent)="toggleLibrary($event)"
+(click)='navigateToLibraryItem(addedItem)'>
 </app-card>
