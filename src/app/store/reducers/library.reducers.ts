@@ -29,7 +29,8 @@ export const libraryReducers = (
           items: state.items
             .filter(x => JSON.stringify(x) !== JSON.stringify(action.payload)),
           filteredItems: state.filteredItems
-            .filter(x => JSON.stringify(x) !== JSON.stringify(action.payload))
+            .filter(x => JSON.stringify(x) !== JSON.stringify(action.payload)),
+          unseenItems: state.unseenItems - 1
         }
         : {
           ...state,

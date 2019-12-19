@@ -26,7 +26,7 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'movies', component: MoviesComponent, children: movieRoutes },
   { path: 'shows', component: ShowsComponent, children: showRoutes },
-  { path: 'library', component: LibraryComponent },
+  { path: 'library', component: LibraryComponent, children: libraryRoutes },
   { path: '**', component: NotFoundComponent }
 ];
 

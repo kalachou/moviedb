@@ -43,10 +43,10 @@ export class LibraryComponent implements OnInit, OnDestroy {
   }
 
   navigateToLibraryItem(item: TvShow|Movie) {
-    if (item instanceof Movie) {
-      this.router.navigate(['library/movies/info', item['id']]);
-    } else if (item instanceof TvShow) {
-      this.router.navigate(['library/shows/info', item.id]);
+    if (item.type === 'movie' ) {
+      this.router.navigate(['/library/movies/info', item['id']]);
+    } else if (item.type === 'show') {
+      this.router.navigate(['/library/shows/info', item.id]);
     }
   }
 
