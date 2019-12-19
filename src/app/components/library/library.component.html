@@ -1,0 +1,9 @@
+<router-outlet></router-outlet>
+<app-card class="library-page__card"
+*ngFor="let addedItem of library$ | async"
+[item]="addedItem"
+[style.backgroundImage]="'url('+addedItem.posterPath+')'"
+[title]="addedItem.title"
+(toggleLibraryEvent)="toggleLibrary($event)"
+(click)='navigateToLibraryItem(addedItem)'>
+</app-card>

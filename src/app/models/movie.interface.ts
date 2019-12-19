@@ -1,29 +1,32 @@
 export interface Movie {
-    adult: boolean;
+  /*    adult: boolean;
 
-    backdropPath: string;
+     backdropPath: string;
 
-    genreIds: Array<number>;
+     genreIds: Array<number>;
 
-    id: number;
+     originalLanguage: string;
 
-    originalLanguage: string;
+     originalTitle: string;
 
-    originalTitle: string;
+     popularity: number;
 
-    overview: string;
+     releaseDate: string;
 
-    popularity: number;
+     video: boolean;
 
-    posterPath: string;
+     voteCount: number;
+  */
+  id: number;
 
-    releaseDate: string;
+  title: string;
 
-    title: string;
+  voteAverage: number;
 
-    video: boolean;
+  posterPath: string;
 
-    voteAverage: number;
+  overview: string;
 
-    voteCount: number;
+  type: 'movie';
+
 }

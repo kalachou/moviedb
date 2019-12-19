@@ -1,0 +1,11 @@
+<router-outlet></router-outlet>
+<app-card class="movies-page__card"
+*ngFor="let movie of movies; index as i"
+[item]="movie"
+[style.backgroundImage]="'url('+movie.posterPath+')'"
+[title]="movie.title"
+(toggleLibraryEvent)="toggleLibrary($event)"
+(click)="navigateToMovie(movie.id)"
+[routerLink]="['info', movie.id]"
+routerLinkActive="page__card_selected">
+</app-card>
