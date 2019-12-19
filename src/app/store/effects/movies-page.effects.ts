@@ -23,7 +23,7 @@ export class MoviesPageEffects {
     ofType<LoadMoviesPage>(EMoviesPageActions.LoadMoviesPage),
     switchMap((action: LoadMoviesPage) => {
       const pageNumber = action.payload;
-      let moviesChunk;
+      let moviesChunk: Movie[];
       let resultRequest: any;
       return this.moviesService.getMoviesPage(pageNumber).pipe(
         map(data => {
@@ -39,7 +39,8 @@ export class MoviesPageEffects {
             voteAverage: x.vote_average,
             posterPath: `https://image.tmdb.org/t/p/w600_and_h900_bestv2${x.poster_path}`,
             overview: x.overview,
-            title: x.title
+            title: x.title,
+            type: 'movie'
           }));
           return new LoadMoviesPageSucces(moviesChunk);
         }),
@@ -68,7 +69,8 @@ export class MoviesPageEffects {
             voteAverage: x.vote_average,
             posterPath: `https://image.tmdb.org/t/p/w600_and_h900_bestv2${x.poster_path}`,
             overview: x.overview,
-            title: x.title
+            title: x.title,
+            type: 'movie'
           }));
           return new LoadMovieInfoSuccess(resultRequest);
         }),

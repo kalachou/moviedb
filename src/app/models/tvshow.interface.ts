@@ -26,4 +26,6 @@ export interface TvShow {
     voteCount: number;
 
     title: string;
+
+    type: 'show';
 }

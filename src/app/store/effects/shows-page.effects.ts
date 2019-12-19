@@ -34,7 +34,8 @@ export class ShowsPageEffects {
                         posterPath: (x.poster_path
                             ? `https://image.tmdb.org/t/p/w600_and_h900_bestv2${x.poster_path}`
                             : console.log(`No poster for this item and oter image is ${x.backdrop_path}`)),
-                        overview: x.overview
+                        overview: x.overview,
+                        type: 'show'
                     }));
                     return new LoadShowsPageSuccess(showsChunk);
                 }),
@@ -59,7 +60,8 @@ export class ShowsPageEffects {
                         posterPath: (x.poster_path
                             ? `https://image.tmdb.org/t/p/w600_and_h900_bestv2${x.poster_path}`
                             : console.log(`No poster for this item and oter image is ${x.backdrop_path}`)),
-                        overview: x.overview
+                        overview: x.overview,
+                        type: 'show'
                     }));
                     return new LoadShowInfoSuccess(resultRequest);
                 }),
