@@ -15,21 +15,23 @@ export class MoviesService {
   constructor(private http: HttpClient) { }
 
   public getMoviesPage(page: number = this.initialPage) {
-    /* const params = new HttpParams();
-    params.set('page', page.toString());
-    params.set('language', 'en-US');
-    params.set('api_key', '0de915948d52603403cc6102091989f6');
+    const params = new HttpParams()
+      .set('page', page.toString())
+      .set('language', 'en-US')
+      .set('api_key', '0de915948d52603403cc6102091989f6');
 
     return forkJoin(
-      this.http.get('https://api.themoviedb.org/3/movie/popular', {...params}));
- */
-
-    return forkJoin(
-      this.http.get(`https://api.themoviedb.org/3/movie/popular?page=${page}&language=en-US&api_key=0de915948d52603403cc6102091989f6`)
+      this.http.get('https://api.themoviedb.org/3/movie/popular', { params })
     );
+
   }
+
   public getMovieInfo(movieID: number) {
-    return this.http.get(`https://api.themoviedb.org/3/movie/${movieID}?api_key=0de915948d52603403cc6102091989f6&language=en-US`);
+    const params = new HttpParams()
+      .set('language', 'en-US')
+      .set('api_key', '0de915948d52603403cc6102091989f6');
+
+    return this.http.get(`https://api.themoviedb.org/3/movie/${ movieID }`, { params });
   }
 
 }
