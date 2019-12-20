@@ -14,7 +14,8 @@ export class SearchService {
   private loadedMoviesArray: Movie[];
   private loadedShowsArray: TvShow[];
   private filteredItemsArray: (Movie | TvShow)[];
-  private showedPage = 'movies';
+  private showedPage = '';
+  showedPageEvent = new EventEmitter();
   private storedSearchInput: string;
 
   public onQuickFilterSearch: EventEmitter<(Movie | TvShow)[]> = new EventEmitter();
@@ -64,5 +65,10 @@ export class SearchService {
 
   public setShowedPage(page: string) {
     this.showedPage = page;
+    this.showedPageEvent.emit(page);
+  }
+
+  public getShowedPage() {
+    return this.showedPage;
   }
 }

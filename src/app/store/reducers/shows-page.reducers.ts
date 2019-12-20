@@ -39,7 +39,11 @@ export const showsPageReducers = (
         case EShowsPageActions.LoadShowInfoFail:
             console.log(action.payload);
             return state;
-
+        case EShowsPageActions.AddNewShowInfo:
+            return {
+                ...state,
+                entities: [action.payload].concat(state.entities)
+            };
 
         default:
             return state;

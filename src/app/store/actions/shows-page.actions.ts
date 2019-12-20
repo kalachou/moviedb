@@ -8,7 +8,8 @@ export enum EShowsPageActions {
     LoadShowsPageFail = 'Loading shows page is failed',
     LoadShowInfo = 'Loading info about a show',
     LoadShowInfoSuccess = 'Loading info about a show is successful',
-    LoadShowInfoFail = 'Loading info about a show is failed'
+    LoadShowInfoFail = 'Loading info about a show is failed',
+    AddNewShowInfo = 'Add  new show to list'
 }
 
 export class LoadShowsPage implements Action {
@@ -41,9 +42,15 @@ export class LoadShowInfoFail implements Action {
     constructor(public payload: Error) { }
 }
 
+export class AddNewShowInfo implements Action {
+    public readonly type = EShowsPageActions.AddNewShowInfo;
+    constructor(public payload: TvShow) {}
+  }
+
 export type ShowsPageActions = LoadShowsPage
     | LoadShowsPageSuccess
     | LoadShowsPageFail
     | LoadShowInfo
     | LoadShowInfoSuccess
-    | LoadShowInfoFail;
+    | LoadShowInfoFail
+    | AddNewShowInfo;

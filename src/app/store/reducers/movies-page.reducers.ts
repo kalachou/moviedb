@@ -39,6 +39,12 @@ export const moviesPageReducers = (
       console.log(action.payload);
       return state;
 
+    case EMoviesPageActions.AddNewMovieInfo:
+      return {
+        ...state,
+        items: [action.payload].concat(state.items)
+      };
+
     default:
       return state;
   }

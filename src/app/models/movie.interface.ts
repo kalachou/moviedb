@@ -27,6 +27,6 @@ export interface Movie {
 
   overview: string;
 
-  type: 'movie';
+  type: string;
 
 }

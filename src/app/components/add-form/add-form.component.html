@@ -1,0 +1,37 @@
+<button (click)="toggle()" *ngIf="showPage">Add item to collection</button>
+<form [formGroup]="addForm" *ngIf="showAddForm" (ngSubmit)="submit($event)" (reset)="toggle()" class="form">
+    <div>
+        <label>
+            <p>title</p>
+            <input type="text" name="" id="titleInput" formControlName="title">
+        </label>
+
+        <label>
+            <p>description</p>
+            <textarea type="text-area" rows="10" cols="50" name="" id="descriptionInput" formControlName="description"></textarea>
+        </label>
+    </div>
+    <div class="form__genre-checkbox-container">
+        <p>genre</p>
+        <div class="genre-checkbox-container__checkboxes">
+            <label *ngFor="let genre of genres.genres, index as i" formArrayName="genre">
+                <input type="checkbox" name="" id="genreInput{{i}}" formControlName="{{i}}">
+                {{genre.name}}
+            </label>
+        </div>
+    </div>
+
+    <label>
+        <input type="checkbox" name="" id="adultInput" formControlName="adult">
+        adult
+    </label>
+    <label>
+        <input type="checkbox" name="" id="posterInput" formControlName="poster">
+        poster
+    </label>
+
+    <div class="break"></div>
+
+    <input type="submit" [disabled]="addForm.invalid" name="add"/>
+    <input type="reset" name="close"/>
+</form >
