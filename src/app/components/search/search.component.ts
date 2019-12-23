@@ -10,9 +10,12 @@ export class SearchComponent implements OnInit {
   @Input() searchInput: string;
   @Output() searchInputChange = new EventEmitter<string>();
 
+  placeholder$ = this.search.showedPlaceholder;
+
   constructor(private search: SearchService) { }
 
   ngOnInit() {
+    this.search.showedPlaceholder.emit('Type title');
   }
 
   onSearchInputChange(model: string) {

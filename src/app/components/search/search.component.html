@@ -1,1 +1,1 @@
-<input [ngModel]="searchInput" (ngModelChange)="onSearchInputChange($event)" />
+<input [ngModel]="searchInput" (ngModelChange)="onSearchInputChange($event)" [placeholder]="placeholder$ | async"/>

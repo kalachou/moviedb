@@ -15,8 +15,11 @@ export class SearchService {
   private loadedShowsArray: TvShow[];
   private filteredItemsArray: (Movie | TvShow)[];
   private showedPage = '';
-  showedPageEvent = new EventEmitter();
   private storedSearchInput: string;
+  private placeholder = 'Type title';
+
+  public showedPageEvent = new EventEmitter();
+  public showedPlaceholder = new EventEmitter();
 
   public onQuickFilterSearch: EventEmitter<(Movie | TvShow)[]> = new EventEmitter();
   public onSearchTurnOff: EventEmitter<boolean> = new EventEmitter();
@@ -28,6 +31,7 @@ export class SearchService {
     this.store.select(selectShowsList).subscribe(x => {
       this.loadedShowsArray = x;
     });
+    this.showedPlaceholder.emit(this.placeholder);
   }
 
   public quickFilterSearch(searchInput: string) {
@@ -66,6 +70,19 @@ export class SearchService {
   public setShowedPage(page: string) {
     this.showedPage = page;
     this.showedPageEvent.emit(page);
+
+    switch (page) {
+      case 'movies': this.placeholder = 'Type movie title';
+                     break;
+      case 'shows': this.placeholder = 'Type show title';
+                    break;
+      case 'library': this.placeholder = 'Type movie or show title';
+                      break;
+      default: this.placeholder = 'Type title';
+        }
+
+
+    this.showedPlaceholder.emit(this.placeholder);
   }
 
   public getShowedPage() {
