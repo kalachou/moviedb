@@ -12,9 +12,16 @@ export class SearchComponent implements OnInit {
 
   placeholder$ = this.search.showedPlaceholder;
 
-  constructor(private search: SearchService) { }
+  constructor(private search: SearchService) {
+    this.search.showedPageEvent.subscribe(x => {
+      //console.log(`changed to ${x}`, this.search.quickFilterSearch(this.searchInput));
+      this.search.quickFilterSearch(this.searchInput);
+    });
+   }
 
   ngOnInit() {
+    this.searchInput = this.search.getStoredSearchInput();
+
     this.search.showedPlaceholder.emit('Type title');
   }
 

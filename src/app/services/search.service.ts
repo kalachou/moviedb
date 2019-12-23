@@ -48,7 +48,6 @@ export class SearchService {
       );
     }
     if (this.showedPage === 'library') {
-      console.log('library', this.store);
       this.store.dispatch(new FilterLibrarySearch(searchInput));
     }
     if (!searchInput) {
