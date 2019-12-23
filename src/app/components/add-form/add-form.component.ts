@@ -136,7 +136,16 @@ export class AddFormComponent implements OnInit {
       overview: info.description,
       id: this.lastAddedID - 1,
       posterPath: '',
-      voteAverage: 0
+      voteAverage: 0,
+      backdropPath: '',
+      firstAirDate: '',
+      genreIds: [],
+      originCountry: [''],
+      originalLanguage: '',
+      originalName: '',
+      name: '',
+      popularity: 0,
+      voteCount: 0
     };
 
     this.lastAddedID -= 1;
