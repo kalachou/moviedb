@@ -1,11 +1,32 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { HomeComponent } from './components/home/home.component';
+import { MoviesComponent } from './components/movies/movies.component';
+import { ShowsComponent } from './components/shows/shows.component';
+import { LibraryComponent } from './components/library/library.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { MovieInfoComponent } from './components/movie-info/movie-info.component';
+import { ShowInfoComponent } from './components/show-info/show-info.component';
 
-const routes: Routes = [];
+const movieRoutes: Routes = [
+  { path: 'info', component: MovieInfoComponent }
+];
+
+const showRoutes: Routes = [
+  { path: 'info', component: ShowInfoComponent }
+];
+
+const appRoutes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'movies', component: MoviesComponent, children: movieRoutes },
+  { path: 'shows', component: ShowsComponent, children: showRoutes },
+  { path: 'library', component: LibraryComponent },
+  { path: '**', component: NotFoundComponent }
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

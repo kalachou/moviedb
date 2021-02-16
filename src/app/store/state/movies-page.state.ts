@@ -1,0 +1,17 @@
+import { RouterReducerState } from '@ngrx/router-store';
+
+import { Movie } from '../../models/movie.interface';
+import { MoviesPage } from '../../models/movies-page.interface';
+
+export interface MoviesPageState {
+    selectedMovie: Movie;
+    router?: RouterReducerState;
+    page: number;
+    items: Movie[];
+}
+
+export const initialMoviesPageState: MoviesPage = {
+    page: 1,
+    items: [],
+    selectedMovie: null
+};
